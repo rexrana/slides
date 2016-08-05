@@ -7,13 +7,13 @@
 
 
 // Default mixins and settings -----------------
-@import '../node_modules/reveal.js/css/theme/template/mixins';
-@import '../node_modules/reveal.js/css/theme/template/settings';
+@import '../reveal.js/css/theme/template/mixins';
+@import '../reveal.js/css/theme/template/settings';
 // ---------------------------------------------
 
 // Include theme-specific fonts
 @import url(../font/pupcat/Pupcat.css);
-@import url(../node_modules/reveal.js/lib/font/source-sans-pro/source-sans-pro.css);
+@import url(../reveal.js/lib/font/source-sans-pro/source-sans-pro.css);
 
 // brand colors
 @import "colors";
@@ -49,7 +49,7 @@ section.has-dark-background {
 
 
 // Theme template ------------------------------
-@import '../node_modules/reveal.js/css/theme/template/theme';
+@import '../reveal.js/css/theme/template/theme';
 // ---------------------------------------------
 
 @import "logo";
