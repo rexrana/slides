@@ -22,7 +22,4 @@
     "grunt-contrib-sass": "^1.0.0",
     "grunt-contrib-watch": "^1.0.0"
   },
-  "dependencies": {
-    "reveal.js": "^3.3.0"
-  }
 }
