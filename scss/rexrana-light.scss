@@ -1,0 +1,58 @@
+/**
+ * Rex Rana (light) theme for reveal.js.
+ *
+ * By Peter Hebert, Rex Rana Design and Development Ltd.
+ * https://rexrana.ca
+ */
+
+
+// Default mixins and settings -----------------
+@import '../node_modules/reveal.js/css/theme/template/mixins';
+@import '../node_modules/reveal.js/css/theme/template/settings';
+// ---------------------------------------------
+
+// Include theme-specific fonts
+@import url(../font/pupcat/Pupcat.css);
+@import url(../node_modules/reveal.js/lib/font/source-sans-pro/source-sans-pro.css);
+
+// brand colors
+@import "colors";
+
+// Override theme settings (see ../template/settings.scss)
+$backgroundColor: #fff;
+
+$mainColor: #222;
+$headingColor: $frog-green;
+
+$mainFontSize: 44px;
+$brandFont: "Pupcat Bold", "Trebuchet MS", "Arial", sans-serif;
+$mainFont: 'Source Sans Pro', Helvetica, sans-serif;
+$headingFont: 'Source Sans Pro', Helvetica, sans-serif;
+$headingTextShadow: none;
+$headingLetterSpacing: normal;
+$headingTextTransform: none;
+$headingFontWeight: 600;
+$linkColor: $light-green;
+$linkColorHover: lighten( $linkColor, 15% );
+$selectionBackgroundColor: lighten( $linkColor, 25% );
+
+$heading1Size: 2.5em;
+$heading2Size: 1.6em;
+$heading3Size: 1.3em;
+$heading4Size: 1.0em;
+
+section.has-dark-background {
+	&, h1, h2, h3, h4, h5, h6 {
+		color: #fff;
+	}
+}
+
+
+// Theme template ------------------------------
+@import '../node_modules/reveal.js/css/theme/template/theme';
+// ---------------------------------------------
+
+@import "logo";
+.reveal .brand {
+	color: $frog-green;
+}
