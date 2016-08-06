@@ -7,3 +7,6 @@ $green: hsl(110, 60, 25);
 $light-green: hsl(110, 60, 33);
 
 $pastel-dark-green: mix($frog-green, #222, 20%);
+
+$brandFont: "Pupcat Bold", "Trebuchet MS", "Arial", sans-serif;
+$brand-emsize: ( 28px / $mainFontSize ) * 1em;

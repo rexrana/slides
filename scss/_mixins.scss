@@ -1,0 +1,49 @@
+@mixin clearfix() {
+  &:before,
+  &:after {
+    content: " "; // 1
+    display: table; // 2
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+@mixin row($gutter: 0) {
+
+  @if $gutter > 0 {
+    margin-left:  ceil(($gutter / -2));
+    margin-right: floor(($gutter / -2));
+  }
+
+  @include clearfix;
+}
+
+@mixin col ($span: 1, $cols: 12, $ml: 0, $mr: 0, $p: 0) {
+    // $m and $p should be decimals
+    // 1 = 100%
+    $colw: ($span * (1/$cols)) - (2* ($ml + $mr + $p));
+
+    display:inline;
+    float: left;
+    width: percentage($colw);
+    @if $ml > 0 {
+      margin-left: percentage($ml);
+    }
+    @if $mr > 0 {
+      margin-right: percentage($mr);
+    }
+    @if $p > 0 {
+      padding: percentage($p);
+    }
+
+}
+
+@function strip-unit($value) {
+	@return $value / ($value * 0 + 1);
+}
+@function em($pixels: $mainFontSize, $context: $mainFontSize) {
+  $val: strip-unit($pixels);
+  $main: strip-unit($context);
+  @return #{$val/$main}em
+}
