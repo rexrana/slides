@@ -5,40 +5,36 @@
  * https://rexrana.ca
  */
 
-// Default mixins and settings -----------------
+// Default mixins and settings
 @import '../reveal.js/css/theme/template/mixins';
 @import '../reveal.js/css/theme/template/settings';
-// ---------------------------------------------
+@import "settings-common";
 
 // Include theme-specific fonts
 @import url(../font/pupcat/Pupcat.css);
 @import url(../reveal.js/lib/font/source-sans-pro/source-sans-pro.css);
 
-// brand colors
-@import "colors";
+// brand colors and font
+@import "brand";
 
-// Override theme settings (see ../template/settings.scss)
+// Theme settings
+
+// Background of the presentation
 $backgroundColor: mix($frog-green, #222, 20%);
+
+// Primary/body text
 $mainColor: #fff;
+
+// Headings
 $headingColor: #fff;
 
-$mainFontSize: 48px;
-$brandFont: "Pupcat Bold", "Trebuchet MS", "Arial", sans-serif;
-
-$mainFont: 'Source Sans Pro', Helvetica, sans-serif;
-$headingFont: 'Source Sans Pro', Helvetica, sans-serif;
-$headingTextShadow: none;
-$headingLetterSpacing: normal;
-$headingTextTransform: none;
-$headingFontWeight: 600;
-$linkColor: #42affa;
+// Links and actions
+$linkColor: $light-green;
 $linkColorHover: lighten( $linkColor, 15% );
-$selectionBackgroundColor: lighten( $linkColor, 25% );
 
-$heading1Size: 2.5em;
-$heading2Size: 1.6em;
-$heading3Size: 1.3em;
-$heading4Size: 1.0em;
+// Text selection
+$selectionBackgroundColor: lighten( $linkColor, 25% );
+$selectionColor: #fff;
 
 section.has-light-background {
 	&, h1, h2, h3, h4, h5, h6 {
@@ -50,7 +46,11 @@ section.has-light-background {
 @import '../reveal.js/css/theme/template/theme';
 // ---------------------------------------------
 
-@import "logo";
+@import "after-theme-common";
+
+.reveal .slides {
+  text-align: inherit;
+}
 
 .reveal .brand {
 	opacity: 0.25;

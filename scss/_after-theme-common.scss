@@ -1,0 +1,92 @@
+.reveal {
+  .float-left {
+    float: left;
+    margin-right: 1em;
+  }
+  .float-right {
+    float: right;
+    margin-left: 1em;
+  }
+  .small {
+    font-size: $smallTextSize;
+  }
+
+  .slides {
+    text-align: left;
+    img {
+      margin: 0;
+      background: none;
+      border: 0 none;
+      box-shadow: none;
+      max-width: 100%;
+      height: auto;
+      &.fit {
+        width: 100%;
+      }
+      &.icon {
+        height: 1em;
+        width: auto;
+        vertical-align: middle;
+        margin-right: 0.125em;
+      }
+
+    }
+  }
+  .brand {
+    font-family: $brandFont;
+    font-size: $brand-emsize;
+    display: block;
+    position: fixed;
+    width: 25%;
+    height: auto;
+    z-index: 30;
+    left: $brand-emsize;
+    bottom: $brand-emsize;
+    -webkit-user-select: none;
+    &.hidden {
+      display: none;
+    }
+    .logo {
+      vertical-align: middle;
+      margin-right: 0.25em;
+    }
+  }
+  .corner-bottom {
+    position: absolute;
+    width: 25%;
+    left: 0;
+    bottom: 0;
+    -webkit-user-select: none;
+  }
+section  {
+  ul li {
+  // line-height: 1.5;
+  margin-bottom: 0.5em;
+}
+
+header {
+  margin-bottom: 1.5em;
+  @include row();
+}
+}
+
+  /*********************************************
+   * title slide
+    *********************************************/
+  .title-slide {
+    text-align: center;
+
+    .top-logo {
+      width: 20%;
+      margin: 0 auto 0.5em auto;
+    }
+    .title h2 {
+      width: 66%;
+      margin: 0 auto;
+    }
+    .presenter {
+      font-size: em(28);
+    }
+
+  }
+}

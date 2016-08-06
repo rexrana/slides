@@ -2,6 +2,8 @@
 Reveal.initialize({
   history: true,
   center: false,
+  width: 1280,
+  height: 720,
 
   // More info https://github.com/hakimel/reveal.js#dependencies
   dependencies: [

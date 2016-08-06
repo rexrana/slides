@@ -5,18 +5,19 @@
  * https://rexrana.ca
  */
 
+ // Default mixins and settings
+ @import '../reveal.js/css/theme/template/mixins';
+ @import '../reveal.js/css/theme/template/settings';
+ @import "settings-common";
 
-// Default mixins and settings -----------------
-@import '../reveal.js/css/theme/template/mixins';
-@import '../reveal.js/css/theme/template/settings';
-// ---------------------------------------------
+ // Include theme-specific fonts
+ @import url(../font/pupcat/Pupcat.css);
+ @import url(../reveal.js/lib/font/source-sans-pro/source-sans-pro.css);
 
-// Include theme-specific fonts
-@import url(../font/pupcat/Pupcat.css);
-@import url(../reveal.js/lib/font/source-sans-pro/source-sans-pro.css);
+ // brand colors and font
+ @import "brand";
 
-// brand colors
-@import "colors";
+ // Theme settings
 
 // Override theme settings (see ../template/settings.scss)
 $backgroundColor: #fff;
@@ -24,22 +25,9 @@ $backgroundColor: #fff;
 $mainColor: #222;
 $headingColor: $frog-green;
 
-$mainFontSize: 44px;
-$brandFont: "Pupcat Bold", "Trebuchet MS", "Arial", sans-serif;
-$mainFont: 'Source Sans Pro', Helvetica, sans-serif;
-$headingFont: 'Source Sans Pro', Helvetica, sans-serif;
-$headingTextShadow: none;
-$headingLetterSpacing: normal;
-$headingTextTransform: none;
-$headingFontWeight: 600;
 $linkColor: $light-green;
 $linkColorHover: lighten( $linkColor, 15% );
 $selectionBackgroundColor: lighten( $linkColor, 25% );
-
-$heading1Size: 2.5em;
-$heading2Size: 1.6em;
-$heading3Size: 1.3em;
-$heading4Size: 1.0em;
 
 section.has-dark-background {
 	&, h1, h2, h3, h4, h5, h6 {
@@ -47,12 +35,12 @@ section.has-dark-background {
 	}
 }
 
-
 // Theme template ------------------------------
 @import '../reveal.js/css/theme/template/theme';
 // ---------------------------------------------
 
-@import "logo";
+@import "after-theme-common";
+
 .reveal .brand {
 	color: $frog-green;
 }

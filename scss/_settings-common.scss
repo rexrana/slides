@@ -1,0 +1,26 @@
+
+// Primary/body text
+$mainFont: 'Source Sans Pro', Helvetica, sans-serif;
+$mainFontSize: 40px;
+
+// Vertical spacing between blocks of text
+$blockMargin: 18px;
+
+@import "mixins";
+
+// Headings
+$headingMargin: 0 0 $blockMargin 0;
+$headingFont: 'Source Sans Pro', Helvetica, sans-serif;
+$headingLineHeight: 1.2;
+$headingLetterSpacing: normal;
+$headingTextTransform: none;
+$headingTextShadow: none;
+$headingFontWeight: 600;
+$heading1TextShadow: $headingTextShadow;
+
+$heading1Size: em(90);
+$heading2Size: em(54);
+$heading3Size: em(48);
+$heading4Size: em(36);
+
+$smallTextSize: em(32)
