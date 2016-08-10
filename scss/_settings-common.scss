@@ -1,10 +1,10 @@
 
 // Primary/body text
 $mainFont: 'Source Sans Pro', Helvetica, sans-serif;
-$mainFontSize: 40px;
+$mainFontSize: 54px;
 
 // Vertical spacing between blocks of text
-$blockMargin: 18px;
+$blockMargin: 20px;
 
 @import "mixins";
 
@@ -19,8 +19,11 @@ $headingFontWeight: 600;
 $heading1TextShadow: $headingTextShadow;
 
 $heading1Size: em(90);
-$heading2Size: em(54);
-$heading3Size: em(48);
-$heading4Size: em(36);
+$heading2Size: em(72);
+$heading3Size: em(60);
+$heading4Size: em(54);
 
-$smallTextSize: em(32)
+$smallTextSize: em(36);
+
+// preformatted
+$preFont: 'Consolas', 'Courier New', 'Lucida Console', 'Monaco', 'Andale Mono', 'Liberation Mono', monospace;

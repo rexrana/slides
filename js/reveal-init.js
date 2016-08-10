@@ -2,15 +2,15 @@
 Reveal.initialize({
   history: true,
   center: false,
-  width: 1280,
-  height: 720,
+  width: 1920,
+  height: 1080,
 
   // More info https://github.com/hakimel/reveal.js#dependencies
   dependencies: [
-    { src: 'bower_components/reveal.js/plugin/markdown/marked.js' },
-    { src: 'bower_components/reveal.js/plugin/markdown/markdown.js' },
-    { src: 'bower_components/reveal.js/plugin/notes/notes.js', async: true },
-    { src: 'bower_components/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+    { src: '../reveal.js/plugin/markdown/marked.js' },
+    { src: '../reveal.js/plugin/markdown/markdown.js' },
+    { src: '../reveal.js/plugin/notes/notes.js', async: true },
+    { src: '../reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
   ]
 });
 
