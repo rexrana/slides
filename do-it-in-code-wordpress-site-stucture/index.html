@@ -1,0 +1,472 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Do it in code! | WordCamp Vancouver 2016</title>
+
+    <link rel="stylesheet" href="../reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="../css/rexrana-dark.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.5.0/styles/qtcreator_dark.min.css">
+
+    <!-- Printing and PDF exports -->
+    <script src="../js/print-pdf.js"></script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section class="title-slide">
+
+          <div class="center-block img-small">
+            <img src="wcyvr2016-logo-white.png" alt="WordCamp Vancouver 2016" class="fit">
+          </div>
+
+          <header>
+            <h1>Do it in code!</h1>
+            <h2>A guide to creating a custom site structure plugin in WordPress.</h2>
+          </header>
+          <div class="presenter">
+            <p>Presented by:</p>
+            <h3>Peter Hebert</h3>
+            <p>
+              Rex Rana Design and Development Ltd.
+            </p>
+          </div>
+          <div class="center-block img-small">
+            <img src="../img/rex-rana-h-white.svg" alt="Rex Rana" class="fit">
+          </div>
+
+        </section>
+
+        <section>
+          <h1>GUI tools vs code</h1>
+          <p>
+            Most structural plugins do everything via the WordPress admin
+
+          </p>
+          <ul>
+            <li>
+              Great for easy setup and ease of use for non-developers
+            </li>
+            <li>Not so good for portability and stability
+
+            </li>
+            <li>Functionality lives in the database and is (too) easily changed.
+
+            </li>
+          </ul>
+
+        </section>
+        <section>
+          <h1>Why a custom plugin?</h1>
+          <ul>
+            <li>
+              Because site functionality should live in code, not the database
+            </li>
+            <li>
+              Manage code in version control system (git, svn)</li>
+            <li>Code Portability / Deployment
+              <ul>
+                <li>
+                  dev / staging / production
+                </li>
+                <li>
+                  re-use for multiple websites / different clients
+                </li>
+              </ul>
+
+            <li>Plugins vs themes
+              <ul>
+                <li>
+                  Plugins for functionality
+                </li>
+                <li>
+                  Themes for presentation
+                </li>
+              </ul>
+            </li>
+          </ul>
+
+        </section>
+
+        <section>
+          <h1>WordPress core functionality</h1>
+          <p>
+            API in core for custom post types, metaboxes, fields, and taxonomy
+          </p>
+          <ul>
+            <li>
+              Not very easy to use
+            </li>
+            <li>
+              You have to do all the heavy lifting
+              <ul>
+                <li>create, read, update and delete (CRUD) functions</li>
+                <li>
+                  Callback functions to display fields in admin
+                </li>
+                <li>
+                  Sanitization / validation functions
+                </li>
+                <li>
+                  nonces
+                </li>
+              </ul>
+            </li>
+            <li>
+              It's a lot to remember - time could be better spent
+            </li>
+
+          </ul>
+
+        </section>
+
+        <section>
+          <h1>Sample metabox</h1>
+          <p>
+            1 metabox with one field =
+            <strong>100</strong>
+            lines of code.
+          </p>
+
+          <pre><code class="hljs php">&lt;?php
+/* Fire our meta box setup function on the post editor screen. */
+add_action( 'load-post.php', 'my_post_meta_boxes_setup' );
+add_action( 'load-post-new.php', 'my_post_meta_boxes_setup' );
+
+/* Meta box setup function. */
+function my_post_meta_boxes_setup() {
+
+  /* Add meta boxes on the 'add_meta_boxes' hook. */
+  add_action( 'add_meta_boxes', 'my_add_post_meta_boxes' );
+
+  /* Save post meta on the 'save_post' hook. */
+  add_action( 'save_post', 'my_save_post_class_meta', 10, 2 );
+}
+
+/* Create one or more meta boxes to be displayed on the post editor screen. */
+function my_add_post_meta_boxes() {
+
+  add_meta_box(
+    'my-post-class',      // Unique ID
+    esc_html__( 'Post Class', 'example' ),    // Title
+    'my_post_class_meta_box',   // Callback function
+    'post',         // Admin page (or post type)
+    'side',         // Context
+    'default'         // Priority
+  );
+}
+
+/* Display the post meta box. */
+function my_post_class_meta_box( $object, $box ) { ?&gt;
+
+  &lt;?php wp_nonce_field( basename( __FILE__ ), 'my_post_class_nonce' ); ?&gt;
+
+  &lt;p&gt;
+    &lt;label for=&quot;my-post-class&quot;&gt;&lt;?php _e( &quot;Add a custom CSS class, which will be applied to WordPress' post class.&quot;, 'example' ); ?&gt;&lt;/label&gt;
+    &lt;br /&gt;
+    &lt;input class=&quot;widefat&quot; type=&quot;text&quot; name=&quot;my-post-class&quot; id=&quot;my-post-class&quot; value=&quot;&lt;?php echo esc_attr( get_post_meta( $object-&gt;ID, 'my_post_class', true ) ); ?&gt;&quot; size=&quot;30&quot; /&gt;
+  &lt;/p&gt;
+&lt;?php }
+
+/* Save the meta box's post metadata. */
+function my_save_post_class_meta( $post_id, $post ) {
+
+  /* Verify the nonce before proceeding. */
+  if ( !isset( $_POST['my_post_class_nonce'] ) || !wp_verify_nonce( $_POST['my_post_class_nonce'], basename( __FILE__ ) ) )
+    return $post_id;
+
+  /* Get the post type object. */
+  $post_type = get_post_type_object( $post-&gt;post_type );
+
+  /* Check if the current user has permission to edit the post. */
+  if ( !current_user_can( $post_type-&gt;cap-&gt;edit_post, $post_id ) )
+    return $post_id;
+
+  /* Get the posted data and sanitize it for use as an HTML class. */
+  $new_meta_value = ( isset( $_POST['my-post-class'] ) ? sanitize_html_class( $_POST['my-post-class'] ) : '' );
+
+  /* Get the meta key. */
+  $meta_key = 'my_post_class';
+
+  /* Get the meta value of the custom field key. */
+  $meta_value = get_post_meta( $post_id, $meta_key, true );
+
+  /* If a new meta value was added and there was no previous value, add it. */
+  if ( $new_meta_value &amp;&amp; '' == $meta_value )
+    add_post_meta( $post_id, $meta_key, $new_meta_value, true );
+
+  /* If the new meta value does not match the old value, update it. */
+  elseif ( $new_meta_value &amp;&amp; $new_meta_value != $meta_value )
+    update_post_meta( $post_id, $meta_key, $new_meta_value );
+
+  /* If there is no new meta value but an old value exists, delete it. */
+  elseif ( '' == $new_meta_value &amp;&amp; $meta_value )
+    delete_post_meta( $post_id, $meta_key, $meta_value );
+}
+
+/* Filter the post class hook with our custom post class function. */
+add_filter( 'post_class', 'my_post_class' );
+
+function my_post_class( $classes ) {
+
+  /* Get the current post ID. */
+  $post_id = get_the_ID();
+
+  /* If we have a post ID, proceed. */
+  if ( !empty( $post_id ) ) {
+
+    /* Get the custom post class. */
+    $post_class = get_post_meta( $post_id, 'my_post_class', true );
+
+    /* If a post class was input, sanitize it and add it to the post class array. */
+    if ( !empty( $post_class ) )
+      $classes[] = sanitize_html_class( $post_class );
+  }
+
+  return $classes;
+}
+
+?&gt;</code></pre>
+        </section>
+
+        <section>
+          <h1>Thankfully, there is a better way!</h1>
+          <p>
+            Many tools exist that greatly simplify creating custom site structure:
+          </p>
+          <ul>
+            <li class="fragment">
+              Plugins (Advanced Custom Fields, Pods, Toolset, etc.)
+              <ul>
+                <li class="fragment">
+                  All have some type of export to code functionality
+                </li>
+              </ul>
+            </li>
+            <li class="fragment">
+              Developer libraries:
+              <a href="https://github.com/WebDevStudios/CMB2">CMB2</a>
+            </li>
+            <li class="fragment">
+              Code Generators:
+              <a href="https://generatewp.com/">GenerateWP</a>
+            </li>
+          </ul>
+
+        </section>
+        <section>
+          <h1>GUI-based structure plugins</h1>
+          <p>
+            Create your structure in the admin, then export to code.
+          </p>
+          <ul>
+            <li class="fragment">
+              <a href="https://www.advancedcustomfields.com/">Advanced Custom Fields</a><br/>
+              export to XML, PHP, JSON
+            </li>
+            <li class="fragment">
+              <a href="http://pods.io/">Pods</a>
+              framework
+              <ul>
+                <li>
+                  Migrate: Packages
+                </li>
+                <li>
+                  Pods Deploy - uses WordPress REST API (beta)
+                </li>
+              </ul>
+
+            </li>
+            <li class="fragment">
+              <a href="https://wp-types.com/">Toolset</a><br/>
+              <a href="https://wp-types.com/documentation/embedded-toolset/">Embedded Toolset</a>
+              / Packager
+            </li>
+
+          </ul>
+
+        </section>
+        <section>
+          <h1>Developer library:
+            <a href="https://github.com/WebDevStudios/CMB2">CMB2</a>
+          </h1>
+
+          <ul>
+            <li>
+              Toolkit for building metaboxes, custom fields, and forms
+            </li>
+            <li>
+              takes care of all the hard stuff for you
+            </li>
+            <li>
+              Declare metaboxes and fields using arrays of parameters
+            </li>
+            <li>
+              32 field types included, with API to declare your own
+            </li>
+            <li>
+              Use on Post Types, Options Pages, User Profiles
+              <ul>
+                <li>
+                  even on the front end of your site
+                </li>
+
+              </ul>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h1>CMB2 Sample Metabox &amp; field</h1>
+          <pre>
+    <code class="hljs php">
+      add_action('cmb2_init', 'phs_films_metabox');
+      function phs_films_metabox()
+      {
+        $prefix = '_phs_';
+
+        $films = new_cmb2_box(array(
+        'id'           =&gt; $prefix . 'films',
+        'title'        =&gt; __('Film Info', 'phs'),
+        'object_types' =&gt; array('film'),
+        'context'      =&gt; 'normal',
+        'priority'     =&gt; 'default',
+        ));
+
+        $films-&gt;add_field(array(
+        'name'    =&gt; __('Release Date', 'phs'),
+        'id'      =&gt; $prefix . 'release_date',
+        'type'    =&gt; 'text_date',
+        'default' =&gt; 'now',
+        'desc'    =&gt; __('select the date the film was released', 'phs'),
+        ));
+      }
+    </code>
+  </pre>
+        </section>
+        <section>
+
+          <h1>
+            <a href="https://generatewp.com/">GenerateWP</a>
+          </h1>
+          <ul>
+            <li>
+              Form-based tool to generates code compliant with WordPress coding standards
+            </li>
+
+            <li>
+              Select a tool, fill in the form, generate the code
+            </li>
+            <li>
+              Copy the ready-to-use code directly to your plugin.
+            </li>
+            <li>
+              Generators:
+              <ul>
+                <li>
+                  Shortcodes, Post Types, Meta Boxes/Fields, Taxonomy, Term Meta, Post Status
+                </li>
+                <li>
+                  Admin: Toolbars, Dashboard Widgets, Quicktags, oEmbed Providers, User Contact Methods
+                </li>
+                <li>
+                  Core: Hooks, Plugin Readme, Schedule Cron Job Event, Register Scripts &amp; Styles
+                </li>
+                <li>
+                  Design: Menus, Sidebars, Widgets, Theme Support, Theme Default Headers
+                </li>
+                <li>
+                  Queries: WP_Query, WP_User_Query, WP_Comment_Query, WP_Term_Query, WP_Site_Query
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h1>Putting it all together</h1>
+          <ul>
+            <li>
+              Download ACF and save it to 'advanced-custom-fields' subdirectory
+            </li>
+            <li>
+              Include it in your plugin file<br/>
+              <pre>
+        <code class="hljs php">include_once('advanced-custom-fields/acf.php');</code>
+      </pre>
+            </li>
+          </ul>
+
+          <p class="small">
+            * Premium plugins require a ACF Pro licence
+          </p>
+        </section>
+
+        <section>
+          <h1>Resources</h1>
+          <ul>
+            <li>
+              <a href="http://storyftw.com/cmb2-metabox-strikes-back">CMB2: THE METABOX STRIKES BACK</a>
+              (Justin Sternberg)
+            </li>
+            <li>
+              <a href="https://docs.google.com/spreadsheets/d/1mSqienVYxLopTFGLPK0lGCJst2knKzXDtLQRgwjeBN8/edit#gid=3">Plugin comparison - Content Types / Custom Fields</a>
+              (Google spreadsheet)
+            </li>
+            <li>
+              Mea vidit consul molestie ut.
+            </li>
+          </ul>
+
+        </section>
+
+        <section>
+          <header>
+            <h1>Find me online</h1>
+          </header>
+          <p class="row">
+            <span class="icons">
+              <img src="../font-awesome-icons/white/svg/link.svg" alt="Rex Rana website" class="icon"/>
+            </span>
+            <span class="float-left">
+              <a href="https://rexrana.ca">rexrana.ca</a><br/>
+              <a href="http://peterhebert.com">peterhebert.com</a>
+            </span>
+          </p>
+          <p class="row">
+            <span class="icons">
+              <img src="../font-awesome-icons/white/svg/twitter.svg" alt="Twitter" class="icon"/>
+            </span>
+            <span class="float-left">
+              @RexRanaDesign<br/>
+              @peter_hebert
+
+            </span>
+          </p>
+
+          <p class="row">
+            <span class="icons">
+              <img src="../font-awesome-icons/white/svg/wordpress.svg" alt="WordPress.org" class="icon"/>
+              <img src="../font-awesome-icons/white/svg/drupal.svg" alt="Drupal.org" class="icon"/>
+              <img src="../font-awesome-icons/white/svg/github.svg" alt="GitHub" class="icon"/>
+              <img src="../font-awesome-icons/white/svg/linkedin.svg" alt="LinkedIn" class="icon"/>
+            </span>
+            <span class="float-left">
+              peterhebert
+            </span>
+          </p>
+
+        </section>
+      </div>
+      <div class="brand hidden" id="logo-id"><img class="logo" src="../img/frog-king-head-white.svg">
+        Rex Rana</div>
+    </div>
+
+    <script src="../reveal.js/lib/js/head.min.js"></script>
+    <script src="../reveal.js/js/reveal.js"></script>
+    <!-- initialize reveal.js -->
+    <script src="../js/reveal-init.js"></script>
+  </body>
+</html>
