@@ -35,31 +35,8 @@
               Rex Rana Design and Development Ltd.
             </p>
           </div>
-          <div class="center-block img-small">
-            <img src="../img/rex-rana-h-white.svg" alt="Rex Rana" class="fit">
-          </div>
-
         </section>
 
-        <section>
-          <h1>GUI tools vs code</h1>
-          <p>
-            Most structural plugins do everything via the WordPress admin
-
-          </p>
-          <ul>
-            <li>
-              Great for easy setup and ease of use for non-developers
-            </li>
-            <li>Not so good for portability and stability
-
-            </li>
-            <li>Functionality lives in the database and is (too) easily changed.
-
-            </li>
-          </ul>
-
-        </section>
         <section>
           <h1>Why a custom plugin?</h1>
           <ul>
@@ -77,20 +54,12 @@
                   re-use for multiple websites / different clients
                 </li>
               </ul>
-
-            <li>Plugins vs themes
-              <ul>
-                <li>
-                  Plugins for functionality
-                </li>
-                <li>
-                  Themes for presentation
-                </li>
-              </ul>
             </li>
           </ul>
 
         </section>
+
+
 
         <section>
           <h1>WordPress core functionality</h1>
@@ -125,112 +94,29 @@
         </section>
 
         <section>
-          <h1>Sample metabox</h1>
+          <h1>Sample metabox - WordPress core</h1>
           <p>
-            1 metabox with one field =
-            <strong>100</strong>
+            1 metabox with 3 fields =
+            <strong>162</strong>
             lines of code.
           </p>
-
-          <pre><code class="hljs php">&lt;?php
-/* Fire our meta box setup function on the post editor screen. */
-add_action( 'load-post.php', 'my_post_meta_boxes_setup' );
-add_action( 'load-post-new.php', 'my_post_meta_boxes_setup' );
-
-/* Meta box setup function. */
-function my_post_meta_boxes_setup() {
-
-  /* Add meta boxes on the 'add_meta_boxes' hook. */
-  add_action( 'add_meta_boxes', 'my_add_post_meta_boxes' );
-
-  /* Save post meta on the 'save_post' hook. */
-  add_action( 'save_post', 'my_save_post_class_meta', 10, 2 );
-}
-
-/* Create one or more meta boxes to be displayed on the post editor screen. */
-function my_add_post_meta_boxes() {
-
-  add_meta_box(
-    'my-post-class',      // Unique ID
-    esc_html__( 'Post Class', 'example' ),    // Title
-    'my_post_class_meta_box',   // Callback function
-    'post',         // Admin page (or post type)
-    'side',         // Context
-    'default'         // Priority
-  );
-}
-
-/* Display the post meta box. */
-function my_post_class_meta_box( $object, $box ) { ?&gt;
-
-  &lt;?php wp_nonce_field( basename( __FILE__ ), 'my_post_class_nonce' ); ?&gt;
-
-  &lt;p&gt;
-    &lt;label for=&quot;my-post-class&quot;&gt;&lt;?php _e( &quot;Add a custom CSS class, which will be applied to WordPress' post class.&quot;, 'example' ); ?&gt;&lt;/label&gt;
-    &lt;br /&gt;
-    &lt;input class=&quot;widefat&quot; type=&quot;text&quot; name=&quot;my-post-class&quot; id=&quot;my-post-class&quot; value=&quot;&lt;?php echo esc_attr( get_post_meta( $object-&gt;ID, 'my_post_class', true ) ); ?&gt;&quot; size=&quot;30&quot; /&gt;
-  &lt;/p&gt;
-&lt;?php }
-
-/* Save the meta box's post metadata. */
-function my_save_post_class_meta( $post_id, $post ) {
-
-  /* Verify the nonce before proceeding. */
-  if ( !isset( $_POST['my_post_class_nonce'] ) || !wp_verify_nonce( $_POST['my_post_class_nonce'], basename( __FILE__ ) ) )
-    return $post_id;
-
-  /* Get the post type object. */
-  $post_type = get_post_type_object( $post-&gt;post_type );
-
-  /* Check if the current user has permission to edit the post. */
-  if ( !current_user_can( $post_type-&gt;cap-&gt;edit_post, $post_id ) )
-    return $post_id;
-
-  /* Get the posted data and sanitize it for use as an HTML class. */
-  $new_meta_value = ( isset( $_POST['my-post-class'] ) ? sanitize_html_class( $_POST['my-post-class'] ) : '' );
-
-  /* Get the meta key. */
-  $meta_key = 'my_post_class';
-
-  /* Get the meta value of the custom field key. */
-  $meta_value = get_post_meta( $post_id, $meta_key, true );
-
-  /* If a new meta value was added and there was no previous value, add it. */
-  if ( $new_meta_value &amp;&amp; '' == $meta_value )
-    add_post_meta( $post_id, $meta_key, $new_meta_value, true );
-
-  /* If the new meta value does not match the old value, update it. */
-  elseif ( $new_meta_value &amp;&amp; $new_meta_value != $meta_value )
-    update_post_meta( $post_id, $meta_key, $new_meta_value );
-
-  /* If there is no new meta value but an old value exists, delete it. */
-  elseif ( '' == $new_meta_value &amp;&amp; $meta_value )
-    delete_post_meta( $post_id, $meta_key, $meta_value );
-}
-
-/* Filter the post class hook with our custom post class function. */
-add_filter( 'post_class', 'my_post_class' );
-
-function my_post_class( $classes ) {
-
-  /* Get the current post ID. */
-  $post_id = get_the_ID();
-
-  /* If we have a post ID, proceed. */
-  if ( !empty( $post_id ) ) {
-
-    /* Get the custom post class. */
-    $post_class = get_post_meta( $post_id, 'my_post_class', true );
-
-    /* If a post class was input, sanitize it and add it to the post class array. */
-    if ( !empty( $post_class ) )
-      $classes[] = sanitize_html_class( $post_class );
-  }
-
-  return $classes;
-}
-
-?&gt;</code></pre>
+          <ul>
+            <li>
+              post type: film
+            </li>
+            <li>
+              metabox: fim info
+            </li>
+            <li>
+              fields: release date, duration, director
+            </li>
+          </ul>
+          <pre>
+            <code class="hljs php">&lt;?php&#10;&#10;/* Fire our meta box setup function on the post editor screen. */&#10;add_action(&apos;load-post.php&apos;, &apos;my_post_meta_boxes_setup&apos;);&#10;add_action(&apos;load-post-new.php&apos;, &apos;my_post_meta_boxes_setup&apos;);&#10;&#10;/* Meta box setup function. */&#10;function my_post_meta_boxes_setup()&#10;{&#10;&#10;  /* Add meta boxes on the &apos;add_meta_boxes&apos; hook. */&#10;  add_action(&apos;add_meta_boxes&apos;, &apos;my_add_post_meta_boxes&apos;);&#10;&#10;  /* Save post meta on the &apos;save_post&apos; hook. */&#10;  add_action(&apos;save_post&apos;, &apos;my_save_post_class_meta&apos;, 10, 2);&#10;}&#10;&#10;/* Create one or more meta boxes to be displayed on the post editor screen. */&#10;function my_add_post_meta_boxes()&#10;{&#10;    add_meta_box(&#10;    &apos;film-info&apos;,      // Unique ID&#10;    esc_html__(&apos;Film Info&apos;, &apos;structure&apos;),    // Title&#10;    &apos;film_info_meta_box&apos;,   // Callback function&#10;    &apos;film&apos;,         // Admin page (or post type)&#10;    &apos;normal&apos;,         // Context&#10;    &apos;default&apos;         // Priority&#10;  );&#10;}&#10;&#10;/* Display the post meta box. */&#10;function film_info_meta_box($object, $box) {  ?&gt;&#10;  &lt;?php wp_nonce_field(basename(__FILE__), &apos;film_info_nonce&apos;); ?&gt;&#10;  &lt;table class=&quot;form-table&quot;&gt;&#10;  &Tab;&Tab;&lt;tbody&gt;&#10;        &lt;tr class=&quot;form-field&quot;&gt;&#10;  &Tab;&Tab;&Tab;&lt;th scope=&quot;row&quot;&gt;&lt;label for=&quot;release-date&quot;&gt;&lt;?php _e(&apos;Release Date&apos;, &apos;structure&apos;); ?&gt;&lt;/label&gt;&lt;/th&gt;&#10;  &Tab;&Tab;&Tab;&lt;td&gt;&#10;          &lt;input style=&quot;max-width: 12em&quot; class=&quot;datepicker&quot; type=&quot;text&quot; name=&quot;release-date&quot; id=&quot;release-date&quot; value=&quot;&lt;?php echo esc_attr(get_post_meta($object-&gt;ID, &apos;release_date&apos;, true)); ?&gt;&quot; /&gt;&#10;          &lt;p class=&quot;description&quot;&gt;&lt;?php _e(&apos;Date the film was released.&apos;, &apos;structure&apos;); ?&gt;&lt;/p&gt;&#10;        &lt;/td&gt;&#10;  &Tab;&Tab;&lt;/tr&gt;&#10;      &lt;tr class=&quot;form-field&quot;&gt;&#10;        &lt;th scope=&quot;row&quot;&gt;&#10;          &lt;label for=&quot;duration&quot;&gt;&lt;?php _e(&apos;Duration&apos;, &apos;structure&apos;); ?&gt;&lt;/label&gt;&#10;        &lt;/th&gt;&#10;        &lt;td&gt;&#10;          &lt;input style=&quot;max-width: 6em&quot; type=&quot;number&quot; name=&quot;duration&quot; id=&quot;duration&quot; value=&quot;&lt;?php echo esc_attr(get_post_meta($object-&gt;ID, &apos;duration&apos;, true)); ?&gt;&quot; /&gt;&#10;          &lt;p class=&quot;description&quot;&gt;&lt;?php _e(&apos;Length of film in minutes.&apos;, &apos;structure&apos;); ?&gt;&lt;/p&gt;&#10;        &lt;/td&gt;&#10;      &lt;/tr&gt;&#10;      &lt;tr class=&quot;form-field&quot;&gt;&#10;        &lt;th scope=&quot;row&quot;&gt;&#10;          &lt;label for=&quot;director&quot;&gt;&lt;?php _e(&apos;Director&apos;, &apos;structure&apos;); ?&gt;&lt;/label&gt;&#10;        &lt;/th&gt;&#10;        &lt;td&gt;&#10;          &lt;input type=&quot;text&quot; name=&quot;director&quot; id=&quot;director&quot; value=&quot;&lt;?php echo esc_attr(get_post_meta($object-&gt;ID, &apos;director&apos;, true)); ?&gt;&quot; /&gt;&#10;        &lt;/td&gt;&#10;      &lt;/tr&gt;&#10;  &Tab;&Tab;&Tab;&lt;/tbody&gt;&#10;      &lt;/table&gt;&#10;&lt;?php&#10;}&#10;&#10;/* Save the meta box&apos;s post metadata. */&#10;function my_save_post_class_meta($post_id, $post)&#10;{&#10;&#10;  /* Verify the nonce before proceeding. */&#10;  if (!isset($_POST[&apos;film_info_nonce&apos;]) || !wp_verify_nonce($_POST[&apos;film_info_nonce&apos;], basename(__FILE__))) {&#10;      return $post_id;&#10;  }&#10;&#10;  /* Get the post type object. */&#10;  $post_type = get_post_type_object($post-&gt;post_type);&#10;&#10;  /* Check if the current user has permission to edit the post. */&#10;  if (!current_user_can($post_type-&gt;cap-&gt;edit_post, $post_id)) {&#10;      return $post_id;&#10;  }&#10;&#10;  // RELEASE DATE&#10;  /* Get the posted data and sanitize it. */&#10;  $new_release_date = ( isset( $_POST[&apos;release-date&apos;] ) ? preg_replace(&quot;([^0-9/])&quot;, &quot;&quot;, $_POST[&apos;release-date&apos;]) : &apos;&apos; );&#10;&#10;  /* Get the meta value of the custom field key. */&#10;  $old_release_date = get_post_meta($post_id, &apos;release_date&apos;, true);&#10;&#10;  /* If a new meta value was added and there was no previous value, add it. */&#10;  if ($new_release_date &amp;&amp; &apos;&apos; == $old_release_date) {&#10;      add_post_meta($post_id, &apos;release_date&apos;, $new_release_date, true);&#10;  }&#10;&#10;  /* If the new meta value does not match the old value, update it. */&#10;  elseif ($new_release_date &amp;&amp; $new_release_date != $old_release_date) {&#10;      update_post_meta($post_id, &apos;release_date&apos;, $new_release_date);&#10;  }&#10;&#10;  /* If there is no new meta value but an old value exists, delete it. */&#10;  elseif (&apos;&apos; == $new_release_date &amp;&amp; $old_release_date) {&#10;      delete_post_meta($post_id, &apos;release_date&apos;, $old_release_date);&#10;  }&#10;&#10;// Duration&#10;/* Get the posted data and sanitize it. */&#10;  $new_duration = ( isset( $_POST[&apos;duration&apos;] ) ? absint( $_POST[&apos;duration&apos;] ) : &apos;&apos; );&#10;&#10;  /* Get the meta value of the custom field key. */&#10;  $old_duration = get_post_meta( $post_id, &apos;duration&apos;, true );&#10;&#10;  /* If a new meta value was added and there was no previous value, add it. */&#10;  if ( $new_duration &amp;&amp; &apos;&apos; == $old_duration ) {&#10;    add_post_meta( $post_id, &apos;duration&apos;, $new_duration, true );&#10;  }&#10;  /* If the new meta value does not match the old value, update it. */&#10;  elseif ( $new_duration &amp;&amp; $new_duration != $old_duration ) {&#10;    update_post_meta( $post_id, &apos;duration&apos;, $new_duration );&#10;  }&#10;  /* If there is no new meta value but an old value exists, delete it. */&#10;  elseif ( &apos;&apos; == $new_duration &amp;&amp; $old_duration ) {&#10;    delete_post_meta( $post_id, &apos;duration&apos;, $old_duration );&#10;  }&#10;&#10;// Director&#10;/* Get the posted data and sanitize it. */&#10;  $new_director = ( isset( $_POST[&apos;director&apos;] ) ? sanitize_text_field( $_POST[&apos;director&apos;] ) : &apos;&apos; );&#10;&#10;  /* Get the meta value of the custom field key. */&#10;  $old_director = get_post_meta( $post_id, &apos;director&apos;, true );&#10;&#10;  /* If a new meta value was added and there was no previous value, add it. */&#10;  if ( $new_director &amp;&amp; &apos;&apos; == $old_director ) {&#10;    add_post_meta( $post_id, &apos;director&apos;, $new_director, true );&#10;  }&#10;  /* If the new meta value does not match the old value, update it. */&#10;  elseif ( $new_director &amp;&amp; $new_director != $old_director ) {&#10;    update_post_meta( $post_id, &apos;director&apos;, $new_director );&#10;  }&#10;  /* If there is no new meta value but an old value exists, delete it. */&#10;  elseif ( &apos;&apos; == $new_director &amp;&amp; $old_director ) {&#10;    delete_post_meta( $post_id, &apos;director&apos;, $old_director );&#10;  }&#10;&#10;}&#10;&#10;// Register datepicker ui for properties&#10;function my_structure_admin_javascript(){&#10;    global $post;&#10;    if( $post-&gt;post_type == &apos;film&apos; &amp;&amp; is_admin() ) {&#10;      wp_enqueue_script( &apos;load-datepicker&apos;, MY_PLUGIN_URL.&apos;admin.js&apos;, array(&apos;jquery&apos;, &apos;jquery-ui-datepicker&apos;) );&#10;    }&#10;}&#10;add_action(&apos;admin_print_scripts&apos;, &apos;my_structure_admin_javascript&apos;);&#10;&#10;// Register ui styles for properties&#10;function my_structure_admin_styles(){&#10;    global $post;&#10;    if($post-&gt;post_type == &apos;film&apos; &amp;&amp; is_admin()) {&#10;      wp_enqueue_style(&apos;jquery-ui-css&apos;, &apos;http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/themes/smoothness/jquery-ui.css&apos;);&#10;    }&#10;}&#10;add_action(&apos;admin_print_styles&apos;, &apos;my_structure_admin_styles&apos;);&#10;</code>
+          </pre>
+<aside class="notes">
+  Show wp-fields.php in code editor
+</aside>
         </section>
 
         <section>
@@ -282,9 +168,13 @@ function my_post_class( $classes ) {
 
             </li>
             <li class="fragment">
-              <a href="https://wp-types.com/">Toolset</a><br/>
-              <a href="https://wp-types.com/documentation/embedded-toolset/">Embedded Toolset</a>
-              / Packager
+              <a href="https://wp-types.com/">Toolset</a>
+              <ul>
+                <li>
+                  <a href="https://wp-types.com/documentation/embedded-toolset/">Embedded Toolset</a>
+                  / Packager
+                </li>
+              </ul>
             </li>
 
           </ul>
@@ -352,34 +242,41 @@ function my_post_class( $classes ) {
           <h1>
             <a href="https://generatewp.com/">GenerateWP</a>
           </h1>
+          <p>
+            Form-based tool - generates code compliant with WordPress coding standards
+          </p>
+          <iframe src="https://generatewp.com/post-type/?clone=A3vVwrM#tab-general" width="1200" height="720"></iframe>
+
+        </section>
+        <section>
+          <h1>
+            <a href="https://generatewp.com/">GenerateWP</a>
+          </h1>
           <ul>
-            <li>
-              Form-based tool to generates code compliant with WordPress coding standards
-            </li>
 
             <li>
               Select a tool, fill in the form, generate the code
             </li>
             <li>
-              Copy the ready-to-use code directly to your plugin.
+              Copy ready-to-use code directly to your plugin.
             </li>
             <li>
               Generators:
               <ul>
                 <li>
-                  Shortcodes, Post Types, Meta Boxes/Fields, Taxonomy, Term Meta, Post Status
+                  <strong>Content</strong>: Shortcodes, Post Types, Meta Boxes/Fields, Taxonomy, Term Meta, Post Status
                 </li>
                 <li>
-                  Admin: Toolbars, Dashboard Widgets, Quicktags, oEmbed Providers, User Contact Methods
+                  <strong>Admin</strong>: Toolbars, Dashboard Widgets, Quicktags, oEmbed Providers, User Contact Methods
                 </li>
                 <li>
-                  Core: Hooks, Plugin Readme, Schedule Cron Job Event, Register Scripts &amp; Styles
+                  <strong>Core</strong>: Hooks, Plugin Readme, Schedule Cron Job Event, Register Scripts &amp; Styles
                 </li>
                 <li>
-                  Design: Menus, Sidebars, Widgets, Theme Support, Theme Default Headers
+                  <strong>Design</strong>: Menus, Sidebars, Widgets, Theme Support, Theme Default Headers
                 </li>
                 <li>
-                  Queries: WP_Query, WP_User_Query, WP_Comment_Query, WP_Term_Query, WP_Site_Query
+                  <strong>Queries</strong>: WP_Query, WP_User_Query, WP_Comment_Query, WP_Term_Query, WP_Site_Query
                 </li>
               </ul>
             </li>
@@ -389,12 +286,17 @@ function my_post_class( $classes ) {
           <h1>Putting it all together</h1>
           <ul>
             <li>
-              Download ACF and save it to 'advanced-custom-fields' subdirectory
+              Download ACF or CMB2 and save it to a subdirectory within your plugin
             </li>
             <li>
-              Include it in your plugin file<br/>
+              Include ACF or CMB2 in your plugin's main PHP file (my-custom-structure.php)<br/>
               <pre>
-        <code class="hljs php">include_once('advanced-custom-fields/acf.php');</code>
+        <code class="hljs php">/* Advanced Custom Fields */
+include_once('lib/advanced-custom-fields/acf.php');
+
+/* OR CMB2 */
+include_once('lib/cmb2/init.php');
+        </code>
       </pre>
             </li>
           </ul>
@@ -460,7 +362,7 @@ function my_post_class( $classes ) {
 
         </section>
       </div>
-      <div class="brand hidden" id="logo-id"><img class="logo" src="../img/frog-king-head-white.svg">
+      <div class="brand" id="logo-id"><img class="logo" src="../img/frog-king-head-white.svg">
         Rex Rana</div>
     </div>
 
