@@ -2,8 +2,9 @@
 Reveal.initialize({
   history: true,
   center: false,
-  width: 1920,
-  height: 1080,
+  width: 1600,
+  height: 900,
+  slideNumber: true,
 
   // More info https://github.com/hakimel/reveal.js#dependencies
   dependencies: [
@@ -13,13 +14,3 @@ Reveal.initialize({
     { src: '../reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
   ]
 });
-
-// listener to reveal logo on inner slides
-Reveal.addEventListener( 'slidechanged', function( event ) {
-  var brand = document.getElementById("logo-id");
-  if ( Reveal.isFirstSlide() ) {
-    brand.className = "brand hidden";
-  } else {
-    brand.className = "brand";
-  }
-} );
