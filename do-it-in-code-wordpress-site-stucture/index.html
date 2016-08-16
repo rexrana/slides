@@ -177,7 +177,7 @@
               Toolkit for building metaboxes, custom fields, and forms
             </li>
             <li>
-              takes care of all the hard stuff for you
+              Takes care of all the hard stuff for you
             </li>
             <li>
               Declare metaboxes and fields using arrays of parameters
@@ -191,41 +191,11 @@
                 <li>
                   even on the front end of your site
                 </li>
-
               </ul>
             </li>
           </ul>
         </section>
         <section>
-          <h1>CMB2 Sample Metabox &amp; field</h1>
-          <pre>
-    <code class="hljs php">
-      add_action('cmb2_init', 'phs_films_metabox');
-      function phs_films_metabox()
-      {
-        $prefix = '_phs_';
-
-        $films = new_cmb2_box(array(
-        'id'           =&gt; $prefix . 'films',
-        'title'        =&gt; __('Film Info', 'phs'),
-        'object_types' =&gt; array('film'),
-        'context'      =&gt; 'normal',
-        'priority'     =&gt; 'default',
-        ));
-
-        $films-&gt;add_field(array(
-        'name'    =&gt; __('Release Date', 'phs'),
-        'id'      =&gt; $prefix . 'release_date',
-        'type'    =&gt; 'text_date',
-        'default' =&gt; 'now',
-        'desc'    =&gt; __('select the date the film was released', 'phs'),
-        ));
-      }
-    </code>
-  </pre>
-        </section>
-        <section>
-
           <h1>
             <a href="https://generatewp.com/">GenerateWP</a>
           </h1>
@@ -246,24 +216,41 @@
           <h1>Putting it all together</h1>
           <ul>
             <li>
-              Download ACF or CMB2 and save it to a subdirectory within your plugin
-            </li>
-            <li>
-              Include ACF or CMB2 in your plugin's main PHP file (my-custom-structure.php)<br/>
-              <pre>
-        <code class="hljs php">/* Advanced Custom Fields */
-include_once('lib/advanced-custom-fields/acf.php');
+              If using ACF or CMB2 :
+                <ul>
+                  <li>
+                      Install plugin in normal way, or download to a subdirectory
+                  </li>
+                  <li>
+                    Include ACF or CMB2 in your plugin's main PHP file</li>
+                </ul>
 
-/* OR CMB2 */
-include_once('lib/cmb2/init.php');
-        </code>
-      </pre>
             </li>
+              <li>
+                create separate includes for each of: <ul>
+                  <li>
+                    Post Types
+                  </li>
+                  <li>
+                    Taxonomy
+                  </li>
+                  <li>
+                    Metaboxes/Fields
+                  </li>
+                </ul>
+              </li>
           </ul>
 
-          <p class="small">
-            * Premium plugins require a ACF Pro licence
-          </p>
+          <aside class="notes">
+            <ul>
+              <li>
+                Premium plugins require a ACF Pro licence
+              </li>
+              <li>
+                show plugin folder structure in code editor
+              </li>
+            </ul>
+          </aside>
         </section>
 
         <section>
@@ -278,7 +265,9 @@ include_once('lib/cmb2/init.php');
               (Google spreadsheet)
             </li>
             <li>
-              Mea vidit consul molestie ut.
+                <img src="../font-awesome-icons/white/svg/github.svg" alt="GitHub" class="icon"/>
+
+              <a href="https://github.com/peterhebert/my-custom-stucture">Sample Plugin</a> (GitHub)
             </li>
           </ul>
 
