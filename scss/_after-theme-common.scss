@@ -76,6 +76,7 @@
     h1 {
       margin-bottom: 0.5em;
     }
+    h2, h3, h4 { margin: 0.5em 0}
     header {
       margin-bottom: 1em;
       h1 {
@@ -99,11 +100,14 @@
     font-family: $preFont;
     box-shadow: none;
     margin: 0;
+    white-space: normal;
   }
   pre code {
     max-height: 700px;
     margin: 0;
     padding: $blockMargin;
+    // word-break: normal;
+    // word-wrap: normal;
   }
   // title slide
   .title-slide {
