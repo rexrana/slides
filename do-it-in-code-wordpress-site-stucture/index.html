@@ -59,7 +59,6 @@
 
         </section>
 
-
         <section>
           <h1>Our Sample Plugin</h1>
           <p>
@@ -127,6 +126,11 @@
             <li class="fragment">
               Code Generators:
               <a href="https://generatewp.com/">GenerateWP</a>
+            </li>
+            <li class="fragment">
+              WP-CLI:
+              <a href="http://wp-cli.org/commands/scaffold/">scaffold</a>
+              command
             </li>
           </ul>
 
@@ -202,7 +206,7 @@
           <ul>
             <li>
               Form-based wizards for generating code compliant with WordPress coding standards
-</li>
+            </li>
             <li>
               Select a tool, fill in the form, generate the code
             </li>
@@ -211,34 +215,66 @@
             </li>
           </ul>
         </section>
-
+        <section>
+          <h1>WP-CLI - 'scaffold' command</h1>
+          <p>
+            The WordPress command-line interface (CLI) has a basic generator command:
+            <a href="http://wp-cli.org/commands/scaffold/">scaffold</a>.
+          </p>
+          <ul>
+            <li>
+              Generates starter code for themes, plugins, unit tests, post types and taxonomy.
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h1>Example - 'Film' post type</h1>
+          <pre><code class="hljs sh">wp scaffold post-type film --label=Film --textdomain=structure  --dashicon=dashicons-editor-video --plugin=my-custom-structure</code></pre>
+          <p>
+            will save to :
+          </p>
+          <pre>
+  <code class="hljs sh">wp-content/plugins/my-custom-structure/post-types/film.php</code>
+</pre>
+        </section>
+        <section>
+          <h1>Example - 'Genre' taxonomy</h1>
+          <pre><code class="hljs sh">wp scaffold taxonomy genre --post_types=film --label=Genre --textdomain=structure --plugin=my-custom-structure</code></pre>
+          <p>
+            will save to :
+          </p>
+          <pre>
+  <code class="hljs sh">wp-content/plugins/my-custom-structure/taxonomies/genre.php</code>
+</pre>
+        </section>
         <section>
           <h1>Putting it all together</h1>
           <ul>
             <li>
               If using ACF or CMB2 :
-                <ul>
-                  <li>
-                      Install plugin in normal way, or download to a subdirectory
-                  </li>
-                  <li>
-                    Include ACF or CMB2 in your plugin's main PHP file</li>
-                </ul>
+              <ul>
+                <li>
+                  Install plugin in normal way, or download to a subdirectory
+                </li>
+                <li>
+                  Include ACF or CMB2 in your plugin's main PHP file</li>
+              </ul>
 
             </li>
-              <li>
-                create separate includes for each of: <ul>
-                  <li>
-                    Post Types
-                  </li>
-                  <li>
-                    Taxonomy
-                  </li>
-                  <li>
-                    Metaboxes/Fields
-                  </li>
-                </ul>
-              </li>
+            <li>
+              create separate includes for each of:
+              <ul>
+                <li>
+                  Post Types
+                </li>
+                <li>
+                  Taxonomy
+                </li>
+                <li>
+                  Metaboxes/Fields
+                </li>
+              </ul>
+            </li>
           </ul>
 
           <aside class="notes">
@@ -265,9 +301,10 @@
               (Google spreadsheet)
             </li>
             <li>
-                <img src="../font-awesome-icons/white/svg/github.svg" alt="GitHub" class="icon"/>
+              <img src="../font-awesome-icons/white/svg/github.svg" alt="GitHub" class="icon"/>
 
-              <a href="https://github.com/peterhebert/my-custom-stucture">Sample Plugin</a> (GitHub)
+              <a href="https://github.com/peterhebert/my-custom-stucture">Sample Plugin</a>
+              (GitHub)
             </li>
           </ul>
 
