@@ -106,8 +106,9 @@
     max-height: 700px;
     margin: 0;
     padding: $blockMargin;
-    // word-break: normal;
-    // word-wrap: normal;
+  }
+  .small {
+    font-size: $extraSmallSize;
   }
   // title slide
   .title-slide {

@@ -4,7 +4,7 @@ $mainFont: 'Source Sans Pro', Helvetica, sans-serif;
 $mainFontSize: 60px;
 
 // Vertical spacing between blocks of text
-$blockMargin: 20px;
+$blockMargin: 16px;
 
 @import "mixins";
 
@@ -23,7 +23,9 @@ $heading2Size: em(72);
 $heading3Size: em(60);
 $heading4Size: em(54);
 
-$smallTextSize: em(48);
+$smallTextSize: em(44);
+
+$extraSmallSize: em(36);
 
 // preformatted
 $preFont: 'Consolas', 'Courier New', 'Lucida Console', 'Monaco', 'Andale Mono', 'Liberation Mono', monospace;
