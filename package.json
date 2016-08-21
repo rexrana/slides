@@ -8,7 +8,8 @@
     "url": "https://github.com/rexrana/slides.git"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "grunt serve"
   },
   "keywords": [
     "slides",
@@ -18,6 +19,7 @@
   "license": "GPL-3.0",
   "devDependencies": {
     "grunt": "^1.0.1",
+    "grunt-contrib-connect": "^1.0.2",
     "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-sass": "^1.0.0",
     "grunt-contrib-watch": "^1.0.0"

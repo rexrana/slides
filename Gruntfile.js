@@ -1,31 +1,48 @@
-module.exports = function(grunt) {
+module.exports = function (grunt) {
+	var port = grunt.option('port') || 8000;
+	var base = grunt.option('base') || '.';
 
-grunt.initConfig({
-  sass: {
-    dist: {
-			options: {
-				style: 'compressed',
-			},
-      files: [{
-        expand: true,
-        cwd: 'scss',
-        src: ['*.scss'],
-        dest: 'css',
-        ext: '.css'
-      }]
-    }
-  },
-  watch: {
-    css: {
-      files: 'scss/**/*.scss',
-      tasks: ['sass'],
-    },
-  },
-});
+    grunt.initConfig({
+        sass: {
+            dist: {
+                options: {
+                    style: 'compressed',
+                },
+                files: [{
+                    expand: true,
+                    cwd: 'scss',
+                    src: ['*.scss'],
+                    dest: 'css',
+                    ext: '.css'
+                }]
+            }
+        },
+        connect: {
+            server: {
+                options: {
+                    port: port,
+                    base: base,
+                    livereload: true,
+                    open: true
+                }
+            }
+        },
 
-grunt.loadNpmTasks('grunt-contrib-sass');
-grunt.loadNpmTasks('grunt-contrib-watch');
+        watch: {
+            css: {
+                files: 'scss/**/*.scss',
+                tasks: ['sass'],
+            },
+        },
+    });
 
-grunt.registerTask('default', ['watch']);
+    grunt.loadNpmTasks('grunt-contrib-sass');
+    grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-connect');
+
+    // Serve presentation locally
+    grunt.registerTask('serve', ['connect', 'watch']);
+
+    grunt.registerTask('default', ['watch']);
 
 }
