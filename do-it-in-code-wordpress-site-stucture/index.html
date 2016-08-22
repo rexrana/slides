@@ -78,6 +78,10 @@
               Fields: Release Date, Duration, Director
             </li>
           </ul>
+            <p>
+              <img src="../font-awesome-icons/white/svg/github.svg" alt="GitHub" class="icon"/>
+             Download or clone sample plugin on <a href="https://github.com/peterhebert/my-custom-structure">GitHub</a>
+            </p>
         </section>
         <section>
           <h1>WordPress core functionality</h1>
@@ -225,7 +229,7 @@
               Generates starter code for themes, plugins, unit tests, post types and taxonomy.
             </li>
             <li>Limited - cannot specify advanced parameters, only gives minimal config with defaults</li>  
-
+            <li>Provides a quick start-off point</li>  
           </ul>
           <aside class="notes">
             <ul>
@@ -236,12 +240,14 @@
           </aside>
         </section>
         <section>
-          <h1>Examples</h1>
+          <h1>WP-CLI Scaffolding Examples</h1>
           <p>Run commands from rom within site directory</p>
           <p>'Film' post type</p>
-          <pre><code class="hljs sh">wp scaffold post-type film --label=Film --textdomain=structure --dashicon=editor-video --plugin=my-custom-structure</code></pre>
+          <pre><code class="hljs sh">wp scaffold post-type film --label=Film --textdomain=structure \
+--dashicon=editor-video --plugin=my-custom-structure</code></pre>
           <p>'Genre' taxonomy</p>
-          <pre><code class="hljs sh">wp scaffold taxonomy genre --post_types=film --label=Genre --textdomain=structure --plugin=my-custom-structure</code></pre>
+          <pre><code class="hljs sh">wp scaffold taxonomy genre --post_types=film --label=Genre \
+--textdomain=structure --plugin=my-custom-structure</code></pre>
         </section>
         <section>
           <h1>Putting it all together</h1>
@@ -258,19 +264,15 @@
 
             </li>
             <li>
-              create separate includes for each of:
+              Create separate include files for each of:
               <ul>
                 <li>
-                  Post Types
+                  Post Types, Taxonomy, Metaboxes/Fields
                 </li>
-                <li>
-                  Taxonomy
-                </li>
-                <li>
-                  Metaboxes/Fields
-                </li>
+            <li>This makes individual items easier to find, comment out or remove</li>
               </ul>
             </li>
+
           </ul>
 
           <aside class="notes">
@@ -296,12 +298,6 @@
               <a href="https://docs.google.com/spreadsheets/d/1mSqienVYxLopTFGLPK0lGCJst2knKzXDtLQRgwjeBN8/edit#gid=3">Plugin comparison - Content Types / Custom Fields</a>
               (Google spreadsheet)
             </li>
-            <li>
-              <img src="../font-awesome-icons/white/svg/github.svg" alt="GitHub" class="icon"/>
-
-              <a href="https://github.com/peterhebert/my-custom-stucture">Sample Plugin</a>
-              (GitHub)
-            </li>
           </ul>
 
         </section>
@@ -326,7 +322,6 @@
             <span class="float-left">
               @RexRanaDesign<br/>
               @peter_hebert
-
             </span>
           </p>
 
