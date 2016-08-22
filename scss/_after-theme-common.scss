@@ -98,9 +98,11 @@
   }
   pre {
     font-family: $preFont;
+    font-size: em(40);
     box-shadow: none;
     margin: 0 0 em(32) 0;
-    white-space: normal;
+    white-space: pre-wrap;
+    word-wrap: break-word;
   }
   pre code {
     max-height: 700px;
