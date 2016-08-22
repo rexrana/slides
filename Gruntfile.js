@@ -7,6 +7,7 @@ module.exports = function (grunt) {
             dist: {
                 options: {
                     style: 'compressed',
+                    sourcemap: 'none'
                 },
                 files: [{
                     expand: true,
