@@ -38,17 +38,28 @@
         </section>
 
         <section>
+          <h1>What is site structure?</h1>
+          <ul class="fragment">
+            <li>Post Types</li>
+            <li>Metaboxes and Fields</li>
+            <li>Taxonomy (beyond Categories &amp; Tags)</li>
+            <li>Menus</li>
+            <li>Permalink Structure</li>
+          </ul>
+        </section>
+
+        <section>
           <h1>Why a custom plugin?</h1>
           <ul>
-            <li>
+            <li class="fragment">
               Because functionality should live in code, not the database
             </li>
-            <li>
+            <li class="fragment">
               Themes for presentation, plugins for functionality
             </li>
-            <li>
+            <li class="fragment">
               Manage code in version control system (git, svn)</li>
-            <li>Code Portability / Deployment
+            <li class="fragment">Code Portability / Deployment
               <ul>
                 <li>
                   dev / staging / production
@@ -59,7 +70,6 @@
               </ul>
             </li>
           </ul>
-
         </section>
 
         <section>
@@ -67,7 +77,7 @@
           <p>
             We'll create a Film listing (like IMDB)
           </p>
-          <ul class="fragments">
+          <ul>
             <li>
               Custom Post Type: Film
             </li>
@@ -81,17 +91,17 @@
               Fields: Release Date, Duration, Director
             </li>
           </ul>
-            <p>
+            <p style="margin-top:1.5em">
               <img src="../font-awesome-icons/white/svg/github.svg" alt="GitHub" class="icon"/>
-             Download or clone sample plugin on <a href="https://github.com/peterhebert/my-custom-structure">GitHub</a>
+             <span class="small">Download or clone sample plugin on <a href="https://github.com/peterhebert/my-custom-structure">GitHub</a></span>
             </p>
         </section>
         <section>
           <h1>WordPress core functionality</h1>
           <ul>
-            <li>
+            <li class="fragment">
               Not easy to use &mdash; you have to do all the heavy lifting
-              <ul>
+              <ul class="fragment">
                 <li>create, read, update and delete (CRUD) functions
                 </li>
                 <li>
@@ -105,7 +115,7 @@
                 </li>
               </ul>
             </li>
-            <li>
+            <li class="fragment">
               It's a lot to remember &mdash; time could be better spent
             </li>
 
@@ -183,19 +193,19 @@
           </h1>
 
           <ul>
-            <li>
+            <li class="fragment">
               Toolkit for building metaboxes, custom fields, and forms
             </li>
-            <li>
+            <li class="fragment">
               Takes care of all the hard stuff for you
             </li>
-            <li>
+            <li class="fragment">
               Declare metaboxes and fields using arrays of parameters
             </li>
-            <li>
+            <li class="fragment">
               32 field types included, with API to declare your own
             </li>
-            <li>
+            <li class="fragment">
               Use on Post Types, Options Pages, User Profiles
               <ul>
                 <li>
@@ -210,13 +220,13 @@
             <a href="https://generatewp.com/">GenerateWP</a>
           </h1>
           <ul>
-            <li>
+            <li class="fragment">
               Form-based wizards for generating code compliant with WordPress coding standards
             </li>
-            <li>
+            <li class="fragment">
               Select a tool, fill in the form, generate the code
             </li>
-            <li>
+            <li class="fragment">
               Copy ready-to-use code directly to your plugin.
             </li>
           </ul>
@@ -228,11 +238,11 @@
             <a href="http://wp-cli.org/commands/scaffold/">scaffold</a>.
           </p>
           <ul>
-            <li>
+            <li class="fragment">
               Generates starter code for themes, plugins, unit tests, post types and taxonomy.
             </li>
-            <li>Limited - cannot specify advanced parameters, only gives minimal config with defaults</li>
-            <li>Provides a quick start-off point</li>
+            <li class="fragment">Limited - cannot specify advanced parameters, only gives minimal config with defaults</li>
+            <li class="fragment">Provides a quick start-off point</li>
           </ul>
           <aside class="notes">
             <ul>
@@ -245,12 +255,16 @@
         <section>
           <h1>WP-CLI Scaffolding Examples</h1>
           <p>Run commands from rom within site directory</p>
-          <p>'Film' post type</p>
-          <pre><code class="hljs sh">wp scaffold post-type film --label=Film --textdomain=structure \
---dashicon=editor-video --plugin=my-custom-structure</code></pre>
-          <p>'Genre' taxonomy</p>
-          <pre><code class="hljs sh">wp scaffold taxonomy genre --post_types=film --label=Genre \
---textdomain=structure --plugin=my-custom-structure</code></pre>
+          <div class="fragment">
+            <p>'Film' post type</p>
+            <pre><code class="hljs sh">wp scaffold post-type film --label=Film --textdomain=structure \
+  --dashicon=editor-video --plugin=my-custom-structure</code></pre>
+          </div>
+          <div class="fragment">
+            <p>'Genre' taxonomy</p>
+            <pre><code class="hljs sh">wp scaffold taxonomy genre --post_types=film --label=Genre \
+  --textdomain=structure --plugin=my-custom-structure</code></pre>
+          </div>
         </section>
         <section>
           <h1>Putting it all together</h1>
@@ -258,23 +272,24 @@
             <li>
               If using ACF or CMB2 :
               <ul>
-                <li>
-                  Install plugin in normal way, or download to a subdirectory
+                <li class="fragment">
+                  Install plugin in normal way, or:
                 </li>
-                <li>
-                  Include ACF or CMB2 in your plugin's main PHP file</li>
+                <li class="fragment">
+                  Download to a subdirectory to use as library
+                  <ul>
+                    <li>Include library in your plugin's main PHP file</li>
+                  </ul>
+                </li>
               </ul>
-
             </li>
-            <li>
-              Create separate include files for each of:
+            <li class="fragment">
+              Create separate include files for each of: Post Types, Taxonomy, Metaboxes/Fields
               <ul>
-                <li>
-                  Post Types, Taxonomy, Metaboxes/Fields
-                </li>
-            <li>This makes individual items easier to find, comment out or remove</li>
+                <li class="fragment">This makes items easier to find, comment out or remove</li>
               </ul>
             </li>
+
 
           </ul>
 
@@ -301,45 +316,50 @@
               <a href="https://docs.google.com/spreadsheets/d/1mSqienVYxLopTFGLPK0lGCJst2knKzXDtLQRgwjeBN8/edit#gid=3">Plugin comparison - Content Types / Custom Fields</a>
               (Google spreadsheet)
             </li>
+            <li>
+              <a href="https://en-ca.wordpress.org/plugins/custom-post-type-permalinks/">Custom Post Type Permalinks</a> - plugin to customize your permalinks for CPTs
+            </li>
           </ul>
 
         </section>
 
         <section>
           <header>
-            <h1>Find me online</h1>
+            <h1>Questions?</h1>
           </header>
-          <p class="row">
-            <span class="icons">
-              <img src="../font-awesome-icons/white/svg/link.svg" alt="Rex Rana website" class="icon"/>
-            </span>
-            <span class="float-left">
-              <a href="https://rexrana.ca">rexrana.ca</a><br/>
-              <a href="http://peterhebert.com">peterhebert.com</a>
-            </span>
-          </p>
-          <p class="row">
-            <span class="icons">
-              <img src="../font-awesome-icons/white/svg/twitter.svg" alt="Twitter" class="icon"/>
-            </span>
-            <span class="float-left">
-              @RexRanaDesign<br/>
-              @peter_hebert
-            </span>
-          </p>
+            <p>
+              Find me online:
+            </p>
+            <p class="row">
+              <span class="icons">
+                <img src="../font-awesome-icons/white/svg/link.svg" alt="Rex Rana website" class="icon"/>
+              </span>
+              <span class="float-left">
+                <a href="https://rexrana.ca">rexrana.ca</a><br/>
+                <a href="http://peterhebert.com">peterhebert.com</a>
+              </span>
+            </p>
+            <p class="row">
+              <span class="icons">
+                <img src="../font-awesome-icons/white/svg/twitter.svg" alt="Twitter" class="icon"/>
+              </span>
+              <span class="float-left">
+                @RexRanaDesign<br/>
+                @peter_hebert
+              </span>
+            </p>
 
-          <p class="row">
-            <span class="icons">
-              <img src="../font-awesome-icons/white/svg/wordpress.svg" alt="WordPress.org" class="icon"/>
-              <img src="../font-awesome-icons/white/svg/drupal.svg" alt="Drupal.org" class="icon"/>
-              <img src="../font-awesome-icons/white/svg/github.svg" alt="GitHub" class="icon"/>
-              <img src="../font-awesome-icons/white/svg/linkedin.svg" alt="LinkedIn" class="icon"/>
-            </span>
-            <span class="float-left">
-              peterhebert
-            </span>
-          </p>
-<p><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This presentation is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
+            <p class="row">
+              <span class="icons">
+                <img src="../font-awesome-icons/white/svg/wordpress.svg" alt="WordPress.org" class="icon"/>
+                <img src="../font-awesome-icons/white/svg/drupal.svg" alt="Drupal.org" class="icon"/>
+                <img src="../font-awesome-icons/white/svg/github.svg" alt="GitHub" class="icon"/>
+                <img src="../font-awesome-icons/white/svg/linkedin.svg" alt="LinkedIn" class="icon"/>
+              </span>
+              <span class="float-left">
+                peterhebert
+              </span>
+            </p>
         </section>
       </div>
       <div class="brand" id="logo-id"><img class="logo" src="../img/frog-king-head-white.svg">
