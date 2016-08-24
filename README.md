@@ -1,6 +1,6 @@
 # Rex Rana presentation slides
 
-Presentation templates for the [reveal.js](http://lab.hakim.se/reveal-js/) framework.
+Presentations given by Rex Rana, and our templates for the [reveal.js](http://lab.hakim.se/reveal-js/) framework.
 
 ## Templates
 - [Dark](dark.html)
