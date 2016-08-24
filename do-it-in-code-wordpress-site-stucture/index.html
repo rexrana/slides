@@ -138,7 +138,7 @@
             </li>
             <li class="fragment">
               Developer libraries:
-              <a href="https://github.com/WebDevStudios/CMB2">CMB2</a>
+              <a href="https://github.com/WebDevStudios/CMB2">CMB2</a>, <a href="https://github.com/humanmade/Custom-Meta-Boxes/">HM Custom Meta Boxes</a>
             </li>
             <li class="fragment">
               Code Generators:
@@ -216,6 +216,29 @@
           </ul>
         </section>
         <section>
+          <h1>Developer library:
+            <a href="https://github.com/humanmade/Custom-Meta-Boxes/">Custom Meta Boxes</a>
+          </h1>
+          <ul>
+            <li class="fragment">
+              framework for easily adding custom fields to the WordPress post edit page
+            </li>
+            <li class="fragment">
+              works similarly to CMB2 (parameter arrays)
+            </li>
+            <li class="fragment">
+              fork of original CMB (predecessor to CMB2)
+            </li>
+            <li class="fragment">
+              20 field types included, plus repeater field
+            </li>
+            <li class="fragment">
+              (Seems to be) only for use on Post Types edit screens
+            </li>
+          </ul>
+        </section>
+
+        <section>
           <h1>
             <a href="https://generatewp.com/">GenerateWP</a>
           </h1>
@@ -254,16 +277,14 @@
         </section>
         <section>
           <h1>WP-CLI Scaffolding Examples</h1>
-          <p>Run commands from rom within site directory</p>
+          <p>Run commands in terminal from within site directory</p>
           <div class="fragment">
             <p>'Film' post type</p>
-            <pre><code class="hljs sh">wp scaffold post-type film --label=Film --textdomain=structure \
-  --dashicon=editor-video --plugin=my-custom-structure</code></pre>
+            <pre><code class="hljs sh">wp scaffold post-type film --label=Film --textdomain=structure --dashicon=editor-video --plugin=my-custom-structure</code></pre>
           </div>
           <div class="fragment">
             <p>'Genre' taxonomy</p>
-            <pre><code class="hljs sh">wp scaffold taxonomy genre --post_types=film --label=Genre \
-  --textdomain=structure --plugin=my-custom-structure</code></pre>
+            <pre><code class="hljs sh">wp scaffold taxonomy genre --post_types=film --label=Genre --textdomain=structure --plugin=my-custom-structure</code></pre>
           </div>
         </section>
         <section>
@@ -276,7 +297,7 @@
                   Install plugin in normal way, or:
                 </li>
                 <li class="fragment">
-                  Download to a subdirectory to use as library
+                  Download to a subdirectory within your plugin folder
                   <ul>
                     <li>Include library in your plugin's main PHP file</li>
                   </ul>
@@ -289,10 +310,7 @@
                 <li class="fragment">This makes items easier to find, comment out or remove</li>
               </ul>
             </li>
-
-
           </ul>
-
           <aside class="notes">
             <ul>
               <li>
