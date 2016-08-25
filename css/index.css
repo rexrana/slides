@@ -1,0 +1,2 @@
+.onlyChrome { display: none }
+body.chrome .onlyChrome { display: inline }
