@@ -89,7 +89,7 @@
     @include row();
   }
   .icons {
-    @include col (3, 12, 0, .025);
+    @include col (4, 12, 0, .025);
     text-align: right;
   }
   ul ul {
@@ -120,7 +120,7 @@
       font-size: em(108);
     }
     h2 {
-      width: 66%;
+      width: 85%;
       margin: 0 auto;
     }
     h3 {

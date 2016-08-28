@@ -42,7 +42,7 @@
           <ul class="fragment">
             <li>Post Types</li>
             <li>Metaboxes and Fields</li>
-            <li>Taxonomy (beyond Categories &amp; Tags)</li>
+            <li>Taxonomy</li>
             <li>Menus</li>
             <li>Permalink Structure</li>
           </ul>
@@ -52,7 +52,7 @@
           <h1>Why a custom plugin?</h1>
           <ul>
             <li class="fragment">
-              Because functionality should live in code, not the database
+              Functionality should live in code, not the database
             </li>
             <li class="fragment">
               Themes for presentation, plugins for functionality
@@ -102,7 +102,7 @@
             <li class="fragment">
               Not easy to use &mdash; you have to do all the heavy lifting
               <ul class="fragment">
-                <li>create, read, update and delete (CRUD) functions
+                <li>CRUD functions (create, read, update and delete)
                 </li>
                 <li>
                   Callback functions with HTML to display fields in admin
@@ -123,16 +123,16 @@
 
         </section>
         <section>
-          <h1>Thankfully, there is a better way!</h1>
+          <h1>Thankfully, there&rsquo;s a better way!</h1>
           <p>
             Many tools exist for simplifying the creation of site structure:
           </p>
           <ul>
             <li class="fragment">
-              Plugins (Advanced Custom Fields, Pods, Toolset, etc.)
+              Plugins (Advanced Custom Fields, Pods, etc.)
               <ul>
                 <li class="fragment">
-                  All have some type of export to code functionality
+                  Most have an export to code functionality
                 </li>
               </ul>
             </li>
@@ -159,8 +159,12 @@
           </p>
           <ul>
             <li class="fragment">
-              <a href="https://www.advancedcustomfields.com/">Advanced Custom Fields</a><br/>
-              export to XML <span class="small">(v4 and below)</span>, JSON <span class="small">(v5)</span>, PHP
+              <a href="https://www.advancedcustomfields.com/">Advanced Custom Fields</a>
+              <ul>
+                <li>
+                  export to XML <span class="small">(v4 and below)</span>, JSON <span class="small">(v5)</span>, PHP
+                </li>
+              </ul>
             </li>
             <li class="fragment">
               <a href="http://pods.io/">Pods</a>
@@ -216,6 +220,28 @@
           </ul>
         </section>
         <section>
+          <h1>Developer library:<br />
+            <a href="https://github.com/humanmade/Custom-Meta-Boxes/">Custom Meta Boxes</a>
+          </h1>
+          <ul>
+            <li class="fragment">
+              framework for easily adding custom fields to the WordPress post edit page
+            </li>
+            <li class="fragment">
+              works similarly to CMB2 (parameter arrays)
+            </li>
+            <li class="fragment">
+              fork of original CMB (predecessor to CMB2)
+            </li>
+            <li class="fragment">
+              20 field types included, plus repeater field
+            </li>
+            <li class="fragment">
+              (Seems to be) only for use on Post Types edit screens
+            </li>
+          </ul>
+        </section>
+        <section>
           <h1>
             <a href="https://generatewp.com/">GenerateWP</a>
           </h1>
@@ -257,13 +283,11 @@
           <p>Run commands from rom within site directory</p>
           <div class="fragment">
             <p>'Film' post type</p>
-            <pre><code class="hljs sh">wp scaffold post-type film --label=Film --textdomain=structure \
-  --dashicon=editor-video --plugin=my-custom-structure</code></pre>
+            <pre><code class="hljs sh">wp scaffold post-type film --label=Film --textdomain=structure --dashicon=editor-video --plugin=my-custom-structure</code></pre>
           </div>
           <div class="fragment">
             <p>'Genre' taxonomy</p>
-            <pre><code class="hljs sh">wp scaffold taxonomy genre --post_types=film --label=Genre \
-  --textdomain=structure --plugin=my-custom-structure</code></pre>
+            <pre><code class="hljs sh">wp scaffold taxonomy genre --post_types=film --label=Genre --textdomain=structure --plugin=my-custom-structure</code></pre>
           </div>
         </section>
         <section>
@@ -278,21 +302,19 @@
                 <li class="fragment">
                   Download to a subdirectory to use as library
                   <ul>
-                    <li>Include library in your plugin's main PHP file</li>
+                    <li class="fragment">Include library in your plugin's main PHP file</li>
                   </ul>
                 </li>
               </ul>
             </li>
             <li class="fragment">
-              Create separate include files for each of: Post Types, Taxonomy, Metaboxes/Fields
+              Create separate include files for each of:<br />
+              Post Types, Taxonomy, Metaboxes/Fields
               <ul>
                 <li class="fragment">This makes items easier to find, comment out or remove</li>
               </ul>
             </li>
-
-
           </ul>
-
           <aside class="notes">
             <ul>
               <li>
@@ -324,9 +346,7 @@
         </section>
 
         <section>
-          <header>
-            <h1>Questions?</h1>
-          </header>
+            <h1>Thank You</h1>
             <p>
               Find me online:
             </p>
