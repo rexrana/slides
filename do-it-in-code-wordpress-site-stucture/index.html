@@ -93,7 +93,7 @@
           </ul>
             <p style="margin-top:1.5em">
               <img src="../font-awesome-icons/white/svg/github.svg" alt="GitHub" class="icon"/>
-             <span class="small">Download or clone sample plugin on <a href="https://github.com/peterhebert/my-custom-structure">GitHub</a></span>
+             <span class="small"><a href="https://github.com/rexrana/my-custom-structure">https://github.com/rexrana/my-custom-structure</a></span>
             </p>
         </section>
         <section>
@@ -137,17 +137,10 @@
               </ul>
             </li>
             <li class="fragment">
-              Developer libraries:
-              <a href="https://github.com/WebDevStudios/CMB2">CMB2</a>
+              Developer libraries: CMB2, Custom Meta Boxes
             </li>
             <li class="fragment">
-              Code Generators:
-              <a href="https://generatewp.com/">GenerateWP</a>
-            </li>
-            <li class="fragment">
-              WP-CLI:
-              <a href="http://wp-cli.org/commands/scaffold/">scaffold</a>
-              command
+              Code Generators: GenerateWP, WP-CLI <em>scaffold</em> command
             </li>
           </ul>
 
@@ -192,10 +185,14 @@
           </ul>
         </section>
         <section>
-          <h1>Developer library:
-            <a href="https://github.com/WebDevStudios/CMB2">CMB2</a>
-          </h1>
+          <header>
+            <h1>Developer library: CMB2</h1>
+  <p>
+    <img src="../font-awesome-icons/white/svg/github.svg" alt="GitHub" class="icon"/>
+     <a href="https://github.com/WebDevStudios/CMB2">github.com/WebDevStudios/CMB2</a>
+  </p>
 
+          </header>
           <ul>
             <li class="fragment">
               Toolkit for building metaboxes, custom fields, and forms
@@ -220,15 +217,22 @@
           </ul>
         </section>
         <section>
-          <h1>Developer library:<br />
-            <a href="https://github.com/humanmade/Custom-Meta-Boxes/">Custom Meta Boxes</a>
-          </h1>
+          <header>
+            <h1>Developer library: Custom Meta Boxes</h1>
+            <p>
+              <img src="../font-awesome-icons/white/svg/github.svg" alt="GitHub" class="icon"/>
+              <a href="https://github.com/humanmade/Custom-Meta-Boxes/">github.com/humanmade/Custom-Meta-Boxes/</a>
+            </p>
+          </header>
           <ul>
             <li class="fragment">
-              framework for easily adding custom fields to the WordPress post edit page
+              Framework for easily adding custom fields
             </li>
             <li class="fragment">
               works similarly to CMB2 (parameter arrays)
+            </li>
+            <li class="fragment">
+              (seems to) only work on post edit pages
             </li>
             <li class="fragment">
               fork of original CMB (predecessor to CMB2)
@@ -237,14 +241,18 @@
               20 field types included, plus repeater field
             </li>
             <li class="fragment">
-              (Seems to be) only for use on Post Types edit screens
+              features a basic 12 column grid system to align fields
             </li>
           </ul>
         </section>
         <section>
-          <h1>
-            <a href="https://generatewp.com/">GenerateWP</a>
-          </h1>
+          <header>
+            <h1>Code Generators: GenerateWP</h1>
+            <p>
+              <img src="../font-awesome-icons/white/svg/link.svg" alt="Website link" class="icon"/>
+              <a href="https://generatewp.com/">generatewp.com</a>
+            </p>
+          </header>
           <ul>
             <li class="fragment">
               Form-based wizards for generating code compliant with WordPress coding standards
@@ -258,10 +266,14 @@
           </ul>
         </section>
         <section>
-          <h1>WP-CLI - 'scaffold' command</h1>
-          <p>
-            The WordPress command-line interface (CLI) has a basic generator command:
-            <a href="http://wp-cli.org/commands/scaffold/">scaffold</a>.
+          <header>
+            <h1>Code Generators: WP-CLI 'scaffold'</h1>
+            <p>
+              <img src="../font-awesome-icons/white/svg/link.svg" alt="Website link" class="icon"/>
+  <a href="http://wp-cli.org/commands/scaffold/">wp-cli.org/commands/scaffold/</a>
+            </p>
+          </header>
+          <p>Command within WordPress command-line interface (CLI)
           </p>
           <ul>
             <li class="fragment">
@@ -280,14 +292,16 @@
         </section>
         <section>
           <h1>WP-CLI Scaffolding Examples</h1>
-          <p>Run commands from rom within site directory</p>
+          <p>Run commands from within site directory</p>
           <div class="fragment">
             <p>'Film' post type</p>
-            <pre><code class="hljs sh">wp scaffold post-type film --label=Film --textdomain=structure --dashicon=editor-video --plugin=my-custom-structure</code></pre>
+            <pre><code class="hljs sh">wp scaffold post-type film --label=Film --textdomain=structure \
+--dashicon=editor-video --plugin=my-custom-structure</code></pre>
           </div>
           <div class="fragment">
             <p>'Genre' taxonomy</p>
-            <pre><code class="hljs sh">wp scaffold taxonomy genre --post_types=film --label=Genre --textdomain=structure --plugin=my-custom-structure</code></pre>
+            <pre><code class="hljs sh">wp scaffold taxonomy genre --post_types=film --label=Genre \
+--textdomain=structure --plugin=my-custom-structure</code></pre>
           </div>
         </section>
         <section>
@@ -300,18 +314,17 @@
                   Install plugin in normal way, or:
                 </li>
                 <li class="fragment">
-                  Download to a subdirectory to use as library
-                  <ul>
-                    <li class="fragment">Include library in your plugin's main PHP file</li>
-                  </ul>
-                </li>
+                  Download to a subdirectory, include in your plugin's main PHP file
+                  </li>
               </ul>
             </li>
             <li class="fragment">
-              Create separate include files for each of:<br />
-              Post Types, Taxonomy, Metaboxes/Fields
+              Create separate PHP files for each of: Post Types, Taxonomy, Metaboxes/Fields
               <ul>
-                <li class="fragment">This makes items easier to find, comment out or remove</li>
+                <li class="fragment">
+                  include these files in your main plugin PHP file
+                </li>
+                <li class="fragment">this makes items easier to find, comment out or remove</li>
               </ul>
             </li>
           </ul>
@@ -326,6 +339,36 @@
             </ul>
           </aside>
         </section>
+<section>
+  <header>
+    <h1>Developer library includes</h1>
+  </header>
+  <p>
+    Advanced Custom Fields
+  </p>
+  <pre><code class="hljs php">if( file_exists( dirname(__FILE__).'/lib/advanced-custom-fields/acf.php' ) ) {
+include_once( 'lib/advanced-custom-fields/acf.php' );
+}</code></pre>
+<p>
+  CMB2
+</p>
+<pre><code class="hljs php">if( file_exists( dirname(__FILE__).'/lib/cmb2/init.php' ) ) {
+    include_once( 'lib/cmb2/init.php' );
+}</code></pre>
+</section>
+<section>
+  <h1>Includes for declaring structure</h1>
+  <pre><code class="hljs php">include_once('post-types/film.php');
+include_once('taxonomies/genre.php');
+
+// METABOXES AND FIELDS
+/* using WordPress core functionality */
+include_once('inc/wp-fields.php');
+/* using ACF */
+include_once('inc/acf-fields.php');
+/* using CMB2  */
+include_once('inc/cmb2-metaboxes.php');</code></pre>
+</section>
 
         <section>
           <h1>Resources</h1>

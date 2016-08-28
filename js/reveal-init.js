@@ -2,7 +2,7 @@
 Reveal.initialize({
   history: true,
   center: false,
-  width: 1200,
+  width: 1600,
   height: 900,
   slideNumber: true,
 
