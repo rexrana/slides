@@ -1,140 +1,148 @@
 .reveal {
-  .float-left {
-    float: left;
-    margin-right: 1em;
-  }
-  .float-right {
-    float: right;
-    margin-left: 1em;
-  }
-  .center-block {
-    margin: 0 auto 0.5em;
-  }
-  .img-small {
-    width: 20%;
-  }
-  .img-md {
-    width: 33%;
-  }
-  .img-lg {
-    width: 66%;
-  }
-  .small {
-    font-size: $smallTextSize;
-  }
-  .slides {
-    text-align: left;
-    img {
-      margin: 0;
-      background: none;
-      border: 0 none;
-      box-shadow: none;
-      max-width: 100%;
-      height: auto;
-      &.fit {
-        width: 100%;
-      }
-      &.icon {
-        height: 1em;
-        width: auto;
-        vertical-align: middle;
-        margin-right: 0.125em;
-      }
+    .float-left {
+        float: left;
+        margin-right: 1em;
     }
-  }
-  .brand {
-    font-family: $brandFont;
-    font-size: $brand-emsize;
-    display: block;
-    position: fixed;
-    width: 25%;
-    height: auto;
-    z-index: 30;
-    left: $brand-emsize;
-    bottom: $brand-emsize;
-    -webkit-user-select: none;
-    &.hidden {
-      display: none;
+    .float-right {
+        float: right;
+        margin-left: 1em;
     }
-    .logo {
-      vertical-align: middle;
-      margin-right: 0.25em;
+    .center-block {
+        margin: 0 auto 0.5em;
     }
-  }
-  .corner-bottom {
-    position: absolute;
-    width: 25%;
-    left: 0;
-    bottom: 0;
-    -webkit-user-select: none;
-  }
+    .img-small {
+        width: 20%;
+    }
+    .img-md {
+        width: 33%;
+    }
+    .img-lg {
+        width: 66%;
+    }
+    .slides {
+        text-align: left;
+        img {
+            margin: 0;
+            background: none;
+            border: 0 none;
+            box-shadow: none;
+            max-width: 100%;
+            height: auto;
+            &.fit {
+                width: 100%;
+            }
+            &.icon {
+                height: 1em;
+                width: auto;
+                vertical-align: middle;
+                margin-right: 0.125em;
+            }
+        }
+    }
+    .brand {
+        font-family: $brandFont;
+        font-size: $brand-emsize;
+        display: block;
+        position: fixed;
+        width: 25%;
+        height: auto;
+        z-index: 30;
+        left: $brand-emsize;
+        bottom: $brand-emsize;
+        -webkit-user-select: none;
+        &.hidden {
+            display: none;
+        }
+        .logo {
+            vertical-align: middle;
+            margin-right: 0.25em;
+        }
+    }
+    .corner-bottom {
+        position: absolute;
+        width: 25%;
+        left: 0;
+        bottom: 0;
+        -webkit-user-select: none;
+    }
+    section {
+        ul li {
+            margin-bottom: em(12);
+        }
+        ul ul li {
+          font-size: $heading4Size;
+        }
 
-  section {
-    ul li {
-      margin-bottom: em(12);
+        h1 {
+            margin-bottom: 0.5em;
+        }
+        h2,
+        h3,
+        h4 {
+            margin: 0.5em 0;
+        }
+        header {
+            margin-bottom: 1em;
+            h1 {
+                margin: 0;
+            }
+        }
     }
-    h1 {
-      margin-bottom: 0.5em;
+    // icons
+    .row {
+        @include row();
     }
-    h2, h3, h4 { margin: 0.5em 0}
-    header {
-      margin-bottom: 1em;
-      h1 {
+    .icons {
+        @include col (3, 12, 0, .025);
+        text-align: right;
+    }
+    ul ul {
+        margin-top: ($blockMargin /2);
+        list-style-type: circle;
+    }
+    pre {
+        font-family: $preFont;
+        font-size: em(38);
+        box-shadow: none;
         margin: 0;
-      }
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        @media print {
+          font-size: em(36);
+        }
     }
-  }
-  // icons
-  .row {
-    @include row();
-  }
-  .icons {
-    @include col (3, 12, 0, .025);
-    text-align: right;
-  }
-  ul ul {
-    margin-top: ($blockMargin /2);
-    list-style-type: circle;
-  }
-  pre {
-    font-family: $preFont;
-    font-size: em(40);
-    box-shadow: none;
-    margin: 0 0 em(32) 0;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-  }
-  pre code {
-    max-height: 700px;
-    margin: 0;
-    padding: $blockMargin;
-  }
-  .small {
-    font-size: $extraSmallSize;
-  }
-  // title slide
-  .title-slide {
-    text-align: center;
-    header { margin: 1em 0; }
-    h1 {
-      font-size: em(108);
+    pre code {
+        max-height: 700px;
+        margin: 0;
+        padding: $blockMargin;
     }
-    h2 {
-      width: 66%;
-      margin: 0 auto;
+    .small {
+        font-size: $smallTextSize;
     }
-    h3 {
-      margin: 0.25em 0;
+    // title slide
+    .title-slide {
+        text-align: center;
+        header {
+            margin: 1em 0;
+        }
+        h1 {
+            font-size: em(108);
+        }
+        h2 {
+            width: 66%;
+            margin: 0 auto;
+        }
+        h3 {
+            margin: 0.25em 0;
+        }
+        .presenter {
+            margin-bottom: 0.5em;
+            p {
+                font-size: em(32);
+            }
+        }
+        p {
+            margin: 0;
+        }
     }
-
-    .presenter {
-      margin-bottom: 0.5em;
-      p {
-        font-size: em(32);
-      }
-    }
-    p {
-      margin: 0;
-    }
-  }
 }
