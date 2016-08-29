@@ -93,7 +93,7 @@
         @include row();
     }
     .icons {
-        @include col (4, 12, 0, .025);
+        @include col (3, 12, 0, .025);
         text-align: right;
     }
     ul ul {
@@ -102,11 +102,14 @@
     }
     pre {
         font-family: $preFont;
-        font-size: em(40);
+        font-size: em(38);
         box-shadow: none;
         margin: 0;
         white-space: pre-wrap;
         word-wrap: break-word;
+        @media print {
+          font-size: em(36);
+        }
     }
     pre code {
         max-height: 700px;
