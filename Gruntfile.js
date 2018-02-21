@@ -41,7 +41,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-connect');
 
-    // Serve presentation locally
+    // Serve presentation locally and watch for changes
     grunt.registerTask('serve', ['connect', 'watch']);
 
     grunt.registerTask('default', ['watch']);

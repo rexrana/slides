@@ -11,6 +11,16 @@ If you are using these templates for your own presentations, and are not an empl
 - [Dark](templates/unbranded/dark.html)
 - [Light](templates/unbranded/light.html)
 
+## Installation
+
+First, check out the repository or download archive and extract. From the root folder, run:
+- `npm install --only=production` if you just want to have the production dependencies
+- `npm install` if you want the dev dependencies (for instance if you wish to customize the stylesheets via SASS)
+
+## Usage
+
+To serve locally, use `npm run start` or `grunt serve`. This will launch in your default browser at http://localhost:8000
+
 ## License
 
 [GNU GENERAL PUBLIC LICENSE Version 3](LICENSE)
