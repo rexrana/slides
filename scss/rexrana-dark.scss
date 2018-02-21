@@ -6,8 +6,9 @@
  */
 
 // Default mixins and settings
-@import '../reveal.js/css/theme/template/mixins';
-@import '../reveal.js/css/theme/template/settings';
+@import '../node_modules/reveal.js/css/theme/template/mixins';
+@import '../node_modules/reveal.js/css/theme/template/settings';
+
 @import "settings-common";
 
 // brand colors and font
@@ -39,7 +40,7 @@ section.has-light-background {
 }
 
 // Theme template ------------------------------
-@import '../reveal.js/css/theme/template/theme';
+@import '../node_modules/reveal.js/css/theme/template/theme';
 // ---------------------------------------------
 
 @import "after-theme-common";
