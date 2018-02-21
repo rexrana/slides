@@ -1,19 +1,21 @@
-// grid
-
-.row {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-gap: ($blockMargin * 1.5);
-  margin-bottom: ($blockMargin * 1.5);
-}
-
-@for $i from 1 through 12 {
-  .col-#{$i} {
-    grid-column: span $i;
-  }
-}
 
 .reveal {
+
+  // grid
+
+  .row {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: ($blockMargin * 1.5);
+    margin-bottom: ($blockMargin * 1.5);
+  }
+
+  @for $i from 1 through 12 {
+    .col-#{$i} {
+      grid-column: span $i;
+    }
+  }
+
 
   @for $i from 1 through 4 {
     .mt#{$i} {
