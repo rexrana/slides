@@ -29,3 +29,6 @@ $smallTextSize: em(40);
 
 // preformatted
 $preFont: 'Consolas', 'Courier New', 'Lucida Console', 'Monaco', 'Andale Mono', 'Liberation Mono', monospace;
+
+// branding (generic)
+$brand-emsize: ( 21px / $mainFontSize ) * 1em;

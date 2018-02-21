@@ -2,28 +2,14 @@
 @font-face {font-family: 'Pupcat Bold';src: url('PupcatRg-Bold.eot');src: url('PupcatRg-Bold.eot?#iefix') format('embedded-opentype'),url('PupcatRg-Bold.woff') format('woff'),url('PupcatRg-Bold.ttf') format('truetype');}
 
 $brandFont: "Pupcat Bold", "Trebuchet MS", "Arial", sans-serif;
-$brand-emsize: ( 28px / $mainFontSize ) * 1em;
+$brand-emsize-rexrana: ( 28px / $mainFontSize ) * 1em;
 
 .reveal {
-    .brand {
+    .brand.rex-rana {
 			color: $frog-green;
-        font-family: $brandFont;
-        font-size: $brand-emsize;
-        display: block;
-        position: fixed;
-        width: 25%;
-        height: auto;
-        z-index: 30;
-        left: $brand-emsize;
-        bottom: $brand-emsize;
-        -webkit-user-select: none;
-        &.hidden {
-            display: none;
-        }
-        .logo {
-            vertical-align: middle;
-            margin-right: 0.25em;
-        }
+      font-family: $brandFont;
+      font-size: $brand-emsize-rexrana;
+      left: $brand-emsize-rexrana;
+      bottom: $brand-emsize-rexrana;
     }
-
 }
