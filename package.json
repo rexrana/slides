@@ -26,7 +26,6 @@
   },
   "dependencies": {
     "cc-icons": "github:cc-icons/cc-icons",
-    "font-awesome-svg-png": "^1.2.2",
     "reveal.js": "^3.6.0"
   }
 }
