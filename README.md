@@ -1,6 +1,6 @@
 # Rex Rana presentation slides
 
-Presentations given by Rex Rana, and our templates for the [reveal.js](http://lab.hakim.se/reveal-js/) framework.
+Presentations given by Rex Rana, and our templates for the [reveal.js](https://revealjs.com/) framework.
 
 Feel free to fork the presentations and use as you wish. If you republish, please give credit to Rex Rana Design and Development Ltd.
 
