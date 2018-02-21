@@ -29,13 +29,19 @@ module.exports = function (grunt) {
             }
         },
 
-        watch: {
-            css: {
-                files: 'scss/**/*.scss',
-                tasks: ['sass'],
-            },
-        },
-    });
+				watch: {
+					options: {
+						livereload: true
+					},
+					css: {
+						files: 'scss/**/*.scss',
+						tasks: ['sass'],
+					},
+					html: {
+						files: '**/*.html'
+					}
+				},
+			});
 
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-watch');
