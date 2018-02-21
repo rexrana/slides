@@ -39,25 +39,6 @@
             }
         }
     }
-    .brand {
-        font-family: $brandFont;
-        font-size: $brand-emsize;
-        display: block;
-        position: fixed;
-        width: 25%;
-        height: auto;
-        z-index: 30;
-        left: $brand-emsize;
-        bottom: $brand-emsize;
-        -webkit-user-select: none;
-        &.hidden {
-            display: none;
-        }
-        .logo {
-            vertical-align: middle;
-            margin-right: 0.25em;
-        }
-    }
     .corner-bottom {
         position: absolute;
         width: 25%;

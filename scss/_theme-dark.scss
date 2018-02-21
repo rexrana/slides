@@ -1,0 +1,22 @@
+// Background of the presentation
+$backgroundColor: mix($frog-green, #222, 20%);
+
+// Primary/body text
+$mainColor: #fff;
+
+// Headings
+$headingColor: #fff;
+
+// Links and actions
+$linkColor: $crown-gold;
+$linkColorHover: lighten( $linkColor, 15% );
+
+// Text selection
+$selectionBackgroundColor: lighten( $linkColor, 25% );
+$selectionColor: #fff;
+
+section.has-light-background {
+	&, h1, h2, h3, h4, h5, h6 {
+		color: #222;
+	}
+}

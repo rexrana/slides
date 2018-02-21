@@ -1,12 +1,29 @@
-$crown-gold: #C5A900;
-$gold: mix($crown-gold, #ffffff, 8%);
-$pastel-gold: hsl(51, 50, 50);
-
-$frog-green: hsl(110, 57, 13);
-$green: hsl(110, 60, 25);
-$light-green: hsl(110, 60, 40);
-
-$pastel-dark-green: mix($frog-green, #222, 20%);
+@font-face {font-family: 'Pupcat Regular';src: url('PupcatRg-Regular.eot');src: url('PupcatRg-Regular.eot?#iefix') format('embedded-opentype'),url('PupcatRg-Regular.woff') format('woff'),url('PupcatRg-Regular.ttf') format('truetype');}
+@font-face {font-family: 'Pupcat Bold';src: url('PupcatRg-Bold.eot');src: url('PupcatRg-Bold.eot?#iefix') format('embedded-opentype'),url('PupcatRg-Bold.woff') format('woff'),url('PupcatRg-Bold.ttf') format('truetype');}
 
 $brandFont: "Pupcat Bold", "Trebuchet MS", "Arial", sans-serif;
 $brand-emsize: ( 28px / $mainFontSize ) * 1em;
+
+.reveal {
+    .brand {
+			color: $frog-green;
+        font-family: $brandFont;
+        font-size: $brand-emsize;
+        display: block;
+        position: fixed;
+        width: 25%;
+        height: auto;
+        z-index: 30;
+        left: $brand-emsize;
+        bottom: $brand-emsize;
+        -webkit-user-select: none;
+        &.hidden {
+            display: none;
+        }
+        .logo {
+            vertical-align: middle;
+            margin-right: 0.25em;
+        }
+    }
+
+}

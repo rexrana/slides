@@ -1,5 +1,5 @@
 /**
- * Rex Rana (light) theme for reveal.js.
+ * Rex Rana (dark) theme for reveal.js.
  *
  * By Peter Hebert, Rex Rana Design and Development Ltd.
  * https://rexrana.ca
@@ -8,17 +8,25 @@
 // Default mixins and settings
 @import '../node_modules/reveal.js/css/theme/template/mixins';
 @import '../node_modules/reveal.js/css/theme/template/settings';
+
 @import "settings-common";
 
 // colors and brand font
 @import "colors";
-@import "brand";
 
 // Theme settings
-@import "theme-light";
+@import "theme-dark";
 
 // Theme template ------------------------------
 @import '../node_modules/reveal.js/css/theme/template/theme';
 // ---------------------------------------------
 
 @import "after-theme-common";
+
+.reveal .slides {
+  text-align: inherit;
+}
+
+.reveal .brand {
+	opacity: 0.25;
+}
