@@ -13,13 +13,15 @@ If you are using these templates for your own presentations, and are not an empl
 
 ## Installation
 
-First, check out the repository or download archive and extract. From the root folder, run:
-- `npm install --only=production` if you just want to have the production dependencies
-- `npm install` if you want the dev dependencies (for instance if you wish to customize the stylesheets via SASS)
+First, check out the repository or download archive and extract.
+
+From the root folder, run `npm install` to install the project dependencies
 
 ## Usage
 
-To serve locally, use `npm run start` or `grunt serve`. This will launch in your default browser at http://localhost:8000
+To serve locally, use `npm run start` or `grunt serve`. This will launch in your default browser at http://localhost:8000 and watch for changes in your SCSS
+
+
 
 ## License
 

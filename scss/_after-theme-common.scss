@@ -1,4 +1,30 @@
+// grid
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-gap: ($blockMargin * 1.5);
+  margin-bottom: ($blockMargin * 1.5);
+}
+
+@for $i from 1 through 12 {
+  .col-#{$i} {
+    grid-column: span $i;
+  }
+}
+
 .reveal {
+
+  @for $i from 1 through 4 {
+    .mt#{$i} {
+      margin-top: ($blockMargin * $i);
+    }
+    .mb#{$i} {
+      margin-bottom: ($blockMargin * $i);
+    }
+
+  }
+
     .float-left {
         float: left;
         margin-right: 1em;
@@ -19,6 +45,8 @@
     .img-lg {
         width: 66%;
     }
+
+    .text-center { text-align: center; }
 
     .brand {
         font-size: $brand-emsize;
@@ -91,11 +119,7 @@
         }
     }
     // icons
-    .row {
-        @include row();
-    }
     .icons {
-        @include col (3, 12, 0, .025);
         text-align: right;
     }
     ul ul {
