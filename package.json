@@ -1,11 +1,11 @@
 {
   "name": "rex-rana-slides",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Slide presentations for Rex Rana",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/rexrana/slides.git"
+    "url": "https://bitbucket.org/rexrana/rex-rana-slides.git"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
