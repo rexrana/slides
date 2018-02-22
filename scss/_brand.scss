@@ -1,5 +1,13 @@
-@font-face {font-family: 'Pupcat Regular';src: url('PupcatRg-Regular.eot');src: url('PupcatRg-Regular.eot?#iefix') format('embedded-opentype'),url('PupcatRg-Regular.woff') format('woff'),url('PupcatRg-Regular.ttf') format('truetype');}
-@font-face {font-family: 'Pupcat Bold';src: url('PupcatRg-Bold.eot');src: url('PupcatRg-Bold.eot?#iefix') format('embedded-opentype'),url('PupcatRg-Bold.woff') format('woff'),url('PupcatRg-Bold.ttf') format('truetype');}
+@font-face {
+  font-family: 'Pupcat Regular';
+  src: url('../font/pupcat/PupcatRg-Regular.eot');
+  src: url('../font/pupcat/PupcatRg-Regular.eot?#iefix') format('embedded-opentype'), url('../font/pupcat/PupcatRg-Regular.woff') format('woff'), url('../font/pupcat/PupcatRg-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Pupcat Bold';
+  src: url('../font/pupcat/PupcatRg-Bold.eot');
+  src: url('../font/pupcat/PupcatRg-Bold.eot?#iefix') format('embedded-opentype'),url('../font/pupcat/PupcatRg-Bold.woff') format('woff'),url('../font/pupcat/PupcatRg-Bold.ttf') format('truetype');
+}
 
 $brandFont: "Pupcat Bold", "Trebuchet MS", "Arial", sans-serif;
 $brand-emsize-rexrana: ( 28px / $mainFontSize ) * 1em;
